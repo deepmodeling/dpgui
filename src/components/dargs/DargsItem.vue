@@ -77,6 +77,7 @@
           v-model="value"
           :hint="jdata.doc"
           :disabled="!check"
+          persistent-hint
         >
           <template v-slot:label>
             <div>
@@ -269,6 +270,9 @@ export default {
               // exists
               vv.load(obj[vv.jdata.name]);
             }
+            vv.jdata.alias.forEach((aa) => {
+              if (aa in obj) vv.load(obj[aa]);
+            });
             if (vv.jdata.optional) {
               vv.check = vv.jdata.name in obj;
             }
@@ -294,7 +298,7 @@ export default {
           if (this.jdata.type.includes("float")) {
             this.select_type = "float";
           }
-          if (this.jdata.type.includes("int")) {
+          else if (this.jdata.type.includes("int")) {
             this.select_type = "int";
           }
         } else if (
@@ -316,9 +320,23 @@ export default {
             });
         }
       } else if (this.jdata.object == "Variant") {
-        this.tab = Object.keys(this.jdata.choice_dict).indexOf(
+        var tab = Object.keys(this.jdata.choice_dict).indexOf(
           obj[this.jdata.flag_name] || this.jdata.default_tag
         );
+        // loop alias
+        if (tab < -1)
+          this.$refs["subitem"].some((vv, index) => {
+            if (
+              vv.jdata.alias.includes(
+                obj[this.jdata.flag_name] || this.jdata.default_tag
+              )
+            ) {
+              tab = index;
+              return true;
+            }
+            return false;
+          });
+        this.tab = tab;
         this.$refs["subitem"][this.tab].load(obj);
       }
     },
