@@ -170,8 +170,11 @@ export default {
         } else if (
           ["str", "int", "float"].some((tt) => this.jdata.type.includes(tt))
         ) {
-          if (!this.value) return null;
-          if (!this.jdata.type.includes(["str"])) {
+          if (!this.value) {
+            if (this.jdata.type.includes("str")) return "";
+            else return 0;
+          }
+          if (!this.jdata.type.includes("str")) {
             return Number.parseFloat(this.value);
           }
           return this.value;
