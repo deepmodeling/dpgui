@@ -14,14 +14,27 @@
       <v-col cols="auto">
         <v-checkbox v-model="check" v-if="jdata.optional"></v-checkbox> </v-col
       ><v-col>
+        <v-row v-if="jdata.type.length > 1">
+          <v-col cols="auto">
+            <v-subheader
+              >Type of {{ jdata.name }}
+              <small v-if="jdata.optional">(optional)</small></v-subheader
+            >
+          </v-col>
+          <v-col>
+            <v-select
+              :items="jdata.type"
+              v-model="select_type"
+              :hint="'Select the type of ' + jdata.name"
+            ></v-select>
+          </v-col>
+        </v-row>
         <!-- text areas for list -->
         <v-textarea
-          v-if="jdata.type.includes('list')"
+          v-if="select_type == 'list'"
           v-model="value"
-          :hint="jdata.doc"
-          :placeholder="
-            Array.isArray(jdata.type) ? jdata.type.join(' or ') : jdata.type
-          "
+          :hint="'Input one element per row.\n' + jdata.doc"
+          :placeholder="select_type"
           :rules="!jdata.optional ? rules.required : []"
           clearable
           @input="up"
@@ -39,16 +52,12 @@
         <v-text-field
           :hint="jdata.doc"
           v-model="value"
-          :placeholder="
-            Array.isArray(jdata.type) ? jdata.type.join(' or ') : jdata.type
-          "
+          :placeholder="select_type"
           :rules="[
             ...(!jdata.optional ? rules.required : []),
-            ...(!jdata.type.includes(['str']) ? rules.number : []),
+            ...(['int', 'float'].includes(select_type) ? rules.number : []),
           ]"
-          v-else-if="
-            ['str', 'int', 'float'].some((tt) => jdata.type.includes(tt))
-          "
+          v-else-if="['str', 'int', 'float'].includes(select_type)"
           clearable
           @input="up"
         >
@@ -64,7 +73,7 @@
 
         <!-- switch for bool -->
         <v-switch
-          v-else-if="jdata.type.includes('bool')"
+          v-else-if="select_type == 'bool'"
           v-model="value"
           :hint="jdata.doc"
           :disabled="!check"
@@ -81,7 +90,7 @@
             ></div> </template
         ></v-switch>
 
-        <div v-else-if="jdata.type.includes('dict')">
+        <div v-else-if="select_type == 'dict'">
           <!-- dict sub_fields -->
           <v-list v-if="Object.keys(jdata.sub_fields).length">
             <v-list-item-title> {{ jdata.name }}</v-list-item-title>
@@ -150,6 +159,7 @@ export default {
         required: [(value) => !!value || "Required."],
         number: [(value) => !value || !isNaN(value) || "Number required."],
       },
+      select_type: this.jdata.type && this.jdata.type[0],
     };
   },
   methods: {
@@ -167,7 +177,7 @@ export default {
           )
         );
       } else if (this.jdata.object == "Argument") {
-        if (this.jdata.type.includes("list")) {
+        if (this.select_type == "list") {
           // textarea -> list
           if (!this.value) return [];
           return this.value
@@ -190,21 +200,20 @@ export default {
                 return v;
               }
             });
-        } else if (
-          ["str", "int", "float"].some((tt) => this.jdata.type.includes(tt))
-        ) {
+        } else if (["str", "int", "float"].includes(this.select_type)) {
           if (!this.value) {
-            if (this.jdata.type.includes("str")) return "";
+            if (this.select_type == "str") return "";
             else return 0;
           }
-          if (!this.jdata.type.includes("str")) {
+          if (!this.select_type == "str") {
             return Number.parseFloat(this.value);
           }
           return this.value;
-        } else if (this.jdata.type.includes("bool")) {
-          if (!this.check) return null;
+        } else if (this.select_type == "bool") {
           return this.value;
-        } else if (this.jdata.type.includes("dict")) {
+        } else if (this.select_type == "NoneType") {
+          return null;
+        } else if (this.select_type == "dict") {
           const sub_fields = Object.keys(this.jdata.sub_fields).length
             ? Object.fromEntries(
                 new Map(
@@ -271,16 +280,35 @@ export default {
       } else if (this.jdata.object == "Argument") {
         if (this.jdata.type.includes("list") && Array.isArray(obj)) {
           // list -> multiple line str
+          this.select_type = "list";
           this.value = obj.map(String).join("\n");
+        } else if (this.jdata.type.includes("str") && typeof obj == "string") {
+          this.select_type = "str";
+          this.value = obj;
         } else if (
-          ["str", "int", "float"].some((tt) => this.jdata.type.includes(tt))
+          ["int", "float"].some((tt) => this.jdata.type.includes(tt)) &&
+          typeof obj == "number"
         ) {
           // str, int, float -> str
           this.value = String(obj);
-        } else if (this.jdata.type.includes("bool")) {
+          if (this.jdata.type.includes("float")) {
+            this.select_type = "float";
+          }
+          if (this.jdata.type.includes("int")) {
+            this.select_type = "int";
+          }
+        } else if (
+          this.jdata.type.includes("bool") &&
+          typeof obj == "boolean"
+        ) {
           // bool
           this.value = obj;
+          this.select_type = "bool";
+        } else if (this.jdata.type.includes("NoneType") && obj === null) {
+          this.value = obj;
+          this.select_type = "NoneType";
         } else if (this.jdata.type.includes("dict")) {
+          this.select_type = "dict";
           load_subitem();
           if (this.$refs["subvariant"])
             this.$refs["subvariant"].forEach((vv) => {
@@ -289,7 +317,7 @@ export default {
         }
       } else if (this.jdata.object == "Variant") {
         this.tab = Object.keys(this.jdata.choice_dict).indexOf(
-                  obj[this.jdata.flag_name] || this.jdata.default_tag
+          obj[this.jdata.flag_name] || this.jdata.default_tag
         );
         this.$refs["subitem"][this.tab].load(obj);
       }
