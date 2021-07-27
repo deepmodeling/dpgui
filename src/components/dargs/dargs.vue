@@ -13,14 +13,14 @@
 
 <script>
 import DargsItem from "./DargsItem.vue";
-import jdata from "../../args/deepmd-kit-2.0.json";
 
 export default {
   name: "dargs",
-  props: {},
+  props: {
+    jdata: Object,
+  },
   data() {
     return {
-      jdata,
     };
   },
   components: {

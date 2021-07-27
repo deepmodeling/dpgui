@@ -14,19 +14,19 @@
     </v-app-bar>
 
     <v-main>
-      <dargs/>
+      <deepmdkit/>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import dargs from './components/dargs/dargs.vue';
+import deepmdkit from './components/deepmd-kit.vue';
 
 export default {
   name: 'App',
 
   components: {
-    dargs,
+    deepmdkit,
   },
 
   data: () => ({
