@@ -1,13 +1,14 @@
 <template>
   <div class="dargs">
-    <v-list>
-      <v-list-item v-for="item in jdata" :key="item.name">
-        <v-list-item-content>
-          <DargsItem :jdata="item" ref="subitem" />
-        </v-list-item-content>
-      </v-list-item>
-    </v-list>
-    <v-btn block v-on:click="dvalue()"> Save JSON </v-btn>
+    <v-file-input
+      truncate-length="15"
+      label="Load JSON"
+      v-model="file"
+      @change="from_json"
+      accept="*.json"
+    ></v-file-input>
+    <DargsItem :jdata="jdata" ref="item" />
+    <v-btn block v-on:click="to_json()"> Save JSON </v-btn>
   </div>
 </template>
 
@@ -17,25 +18,22 @@ import DargsItem from "./DargsItem.vue";
 export default {
   name: "dargs",
   props: {
-    jdata: Object,
+    jdata: [Object, Array],
   },
   data() {
     return {
+      file: null,
     };
   },
   components: {
     DargsItem,
   },
   methods: {
-    dvalue: function () {
-      const json = Object.fromEntries(
-        new Map(
-          this.$refs["subitem"]
-            .filter((vv) => !vv.jdata.optional || vv.check)
-            .map((vv) => [vv.jdata.name, vv.dvalue()])
-        )
-      );
-      const data = JSON.stringify(json, null, 2);
+    /**
+     * Export to json.
+     */
+    to_json: function () {
+      const data = JSON.stringify(this.$refs["item"].dvalue(), null, 2);
       // https://stackoverflow.com/a/48612128/9567349
       const blob = new Blob([data], { type: "text/plain" });
       const e = document.createEvent("MouseEvents"),
@@ -61,6 +59,22 @@ export default {
         null
       );
       a.dispatchEvent(e);
+    },
+    /**
+     * Load from JSON.
+     */
+    from_json: function () {
+      const item = this.$refs["item"];
+      // https://stackoverflow.com/a/26298948
+      if (!this.file) {
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const obj = JSON.parse(e.target.result);
+        item.load(obj);
+      };
+      reader.readAsText(this.file);
     },
   },
 };

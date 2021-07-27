@@ -1,5 +1,15 @@
 <template>
-  <div class="w-100 mx-1" v-if="jdata.object == 'Argument'">
+  <!-- list -->
+  <div class="w-100" v-if="Array.isArray(jdata)">
+    <v-list>
+      <v-list-item v-for="item in jdata" :key="item.name">
+        <v-list-item-content>
+          <DargsItem :jdata="item" ref="subitem" />
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+  </div>
+  <div class="w-100 mx-1" v-else-if="jdata.object == 'Argument'">
     <v-row class="w-100">
       <v-col cols="auto">
         <v-checkbox v-model="check" v-if="jdata.optional"></v-checkbox> </v-col
@@ -106,7 +116,8 @@
       </v-tab>
     </v-tabs>
     <v-tabs-items v-model="tab">
-      <v-tab-item v-for="item in jdata.choice_dict" :key="item.name">
+      <!-- important: use eager prop to let this.$refs["subitem"][this.tab] not undefined -->
+      <v-tab-item v-for="item in jdata.choice_dict" :key="item.name" eager>
         <v-card flat>
           <DargsItem :jdata="item" ref="subitem" />
         </v-card>
@@ -119,7 +130,7 @@
 export default {
   name: "DargsItem",
   props: {
-    jdata: Object,
+    jdata: [Object, Array],
   },
   data() {
     var tab = 0;
@@ -142,8 +153,20 @@ export default {
     };
   },
   methods: {
+    /**
+     * Get a object.
+     * @returns {object} The returned obj.
+     */
     dvalue: function () {
-      if (this.jdata.object == "Argument") {
+      if (Array.isArray(this.jdata)) {
+        return Object.fromEntries(
+          new Map(
+            this.$refs["subitem"]
+              .filter((vv) => !vv.jdata.optional || vv.check)
+              .map((vv) => [vv.jdata.name, vv.dvalue()])
+          )
+        );
+      } else if (this.jdata.object == "Argument") {
         if (this.jdata.type.includes("list")) {
           // textarea -> list
           if (!this.value) return [];
@@ -222,6 +245,53 @@ export default {
     up: function () {
       if (this.value) {
         this.check = true;
+      }
+    },
+    /**
+     * Load data from an object.
+     * @param {object} obj the object to load
+     */
+    load: function (obj) {
+      const load_subitem = () => {
+        if (this.$refs["subitem"])
+          this.$refs["subitem"].forEach((vv) => {
+            // check if it exists, name and alias
+            if (vv.jdata.name in obj) {
+              // exists
+              vv.load(obj[vv.jdata.name]);
+            }
+            if (vv.jdata.optional) {
+              vv.check = vv.jdata.name in obj;
+            }
+          });
+      };
+      if (Array.isArray(this.jdata)) {
+        // array
+        load_subitem();
+      } else if (this.jdata.object == "Argument") {
+        if (this.jdata.type.includes("list") && Array.isArray(obj)) {
+          // list -> multiple line str
+          this.value = obj.map(String).join("\n");
+        } else if (
+          ["str", "int", "float"].some((tt) => this.jdata.type.includes(tt))
+        ) {
+          // str, int, float -> str
+          this.value = String(obj);
+        } else if (this.jdata.type.includes("bool")) {
+          // bool
+          this.value = obj;
+        } else if (this.jdata.type.includes("dict")) {
+          load_subitem();
+          if (this.$refs["subvariant"])
+            this.$refs["subvariant"].forEach((vv) => {
+              vv.load(obj);
+            });
+        }
+      } else if (this.jdata.object == "Variant") {
+        this.tab = Object.keys(this.jdata.choice_dict).indexOf(
+                  obj[this.jdata.flag_name] || this.jdata.default_tag
+        );
+        this.$refs["subitem"][this.tab].load(obj);
       }
     },
   },
