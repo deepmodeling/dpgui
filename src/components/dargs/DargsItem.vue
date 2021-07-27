@@ -234,6 +234,5 @@ export default {
 }
 .mx-1 {
   margin-left: 1em;
-  margin-right: 1em;
 }
 </style>
