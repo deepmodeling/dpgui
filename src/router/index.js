@@ -25,6 +25,7 @@ const routes = [
     name: 'New',
     component: () => import(/* webpackChunkName: "input" */ '../views/NewConfig.vue')
   },
+  { path: '*', component: Home },
 ]
 
 const router = new VueRouter({
