@@ -1,11 +1,10 @@
 <template>
   <div class="dargs">
     <v-file-input
-      truncate-length="15"
       label="Load JSON"
       v-model="file"
       @change="from_json"
-      accept="*.json"
+      accept=".json"
     ></v-file-input>
     <DargsItem :jdata="jdata" ref="item" />
     <v-btn block v-on:click="to_json()"> Save JSON </v-btn>
