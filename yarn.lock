@@ -4474,6 +4474,13 @@ ieee754@^1.1.4:
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
   integrity sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==
 
+ifdef-loader@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/ifdef-loader/-/ifdef-loader-2.3.0.tgz#cc8d7c52bdd83de7621bde90f00f256bdf56b7cb"
+  integrity sha512-JY3rPC1QNMzQ/h8pJlxyP6DsujlGnCYDmEYROQpMe90m1aRFVLtpTuqmN15aaq2/9vOmzByWMxWdvR1O+xNHGw==
+  dependencies:
+    loader-utils "^1.1.0"
+
 iferr@^0.1.5:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/iferr/-/iferr-0.1.5.tgz#c60eed69e6d8fdb6b3104a1fcbca1c192dc5b501"
@@ -4984,6 +4991,11 @@ jsbn@~0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
   integrity sha1-peZUwuWi3rXyAdls77yoDA7y9RM=
+
+jsdelivr_url@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/jsdelivr_url/-/jsdelivr_url-0.0.1.tgz#3a9c0440575ec092d88b403091b8b68d2c0df755"
+  integrity sha512-HjjyhWU8kG1Q1JsFf6D7wNF0REqUA8CMiBHHl0w5RW5uLVgdLK5UxzW5rwmorP8vxLNiNo3rjr+E4cpFb5gI/g==
 
 jsesc@^2.5.1:
   version "2.5.2"
@@ -6885,7 +6897,7 @@ repeat-string@^1.6.1:
   resolved "https://registry.yarnpkg.com/repeat-string/-/repeat-string-1.6.1.tgz#8dcae470e1c88abc2d600fff4a776286da75e637"
   integrity sha1-jcrkcOHIirwtYA//Sndihtp15jc=
 
-request@^2.88.2:
+request@^2.85.0, request@^2.88.2:
   version "2.88.2"
   resolved "https://registry.yarnpkg.com/request/-/request-2.88.2.tgz#d73c918731cb5a87da047e207234146f664d12b3"
   integrity sha512-MsvtOrfG9ZcrOwAW+Qi+F6HbD0CWXEh9ou77uOb7FM2WPhwT7smM833PzanhJLsgXjN89Ir6V2PczXNnMpwKhw==
@@ -7457,6 +7469,19 @@ sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
+
+sri-create@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/sri-create/-/sri-create-0.0.3.tgz#35ba419e6d9381299615cd164c96d09b1e0e2128"
+  integrity sha512-4ZL3TLvPvu0y/3YpTkZdd441ykiRnrdWJuvus99WIT7NWTS2Dl/dFdZ7j0+zuL8cZPAKG2qGSdB+OLTBMRNuyQ==
+  dependencies:
+    request "^2.85.0"
+    sri "^1.1.0"
+
+sri@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/sri/-/sri-1.1.0.tgz#0b5cf64620e490b95fd805b0c710d7669c53cdfe"
+  integrity sha1-C1z2RiDkkLlf2AWwxxDXZpxTzf4=
 
 sshpk@^1.7.0:
   version "1.16.1"
@@ -8322,6 +8347,13 @@ webpack-bundle-analyzer@^3.8.0:
     mkdirp "^0.5.1"
     opener "^1.5.1"
     ws "^6.0.0"
+
+webpack-cdn-plugin@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/webpack-cdn-plugin/-/webpack-cdn-plugin-3.3.1.tgz#7e08855ab3fc0af6859f0b49620dc81f58914e23"
+  integrity sha512-xwhQ6xstFbPlgEkKNAOjXs/6YkPdzYeXl9na+CSBF7p1L88PZIGgL++vel4oiAnp+WTud7fhnSjlB79U6aN28w==
+  dependencies:
+    sri-create "^0.0.3"
 
 webpack-chain@^6.4.0:
   version "6.5.1"

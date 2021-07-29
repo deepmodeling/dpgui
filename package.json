@@ -23,11 +23,14 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "ifdef-loader": "^2.3.0",
+    "jsdelivr_url": "^0.0.1",
     "sass": "~1.32.0",
     "sass-loader": "^10.0.0",
     "vue-cli-plugin-vuetify": "~2.4.1",
     "vue-template-compiler": "^2.6.11",
-    "vuetify-loader": "^1.7.0"
+    "vuetify-loader": "^1.7.0",
+    "webpack-cdn-plugin": "^3.3.1"
   },
   "eslintConfig": {
     "root": true,
