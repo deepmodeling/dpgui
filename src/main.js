@@ -5,7 +5,7 @@ import router from './router'
 /// #if !process.env.VUE_APP_CDN
 import { Plugin } from 'vue2-storage';
 /// #else
-// #import Plugin from 'vue2-storage'
+// #code import Plugin from 'vue2-storage'
 /// #endif
 import './registerServiceWorker'
 
