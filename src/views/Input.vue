@@ -54,7 +54,9 @@ export default {
     },
   },
   beforeRouteUpdate(to, from, next) {
-    this.load(to.params.id);
+    const { loading, jdata } = this.load(to.params.id);
+    this.loading = loading;
+    this.jdata = jdata;
     next();
   },
 };
