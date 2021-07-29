@@ -7,7 +7,6 @@ module.exports = {
   ],
   publicPath: process.env.VUE_APP_CDN ? gh_url("deepmodeling", "dpgui", process.env.VUE_APP_CDN, '') : '/dpgui/',
   configureWebpack: {
-    title: "DP-GUI",
     plugins: [
       ...(
         process.env.VUE_APP_CDN
@@ -24,4 +23,12 @@ module.exports = {
           : [])
     ]
   },
+  chainWebpack: config => {
+    config
+      .plugin('html')
+      .tap(args => {
+        args[0].title = "DP-GUI";
+        return args;
+      })
+  }
 }
