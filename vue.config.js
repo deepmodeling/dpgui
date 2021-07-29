@@ -5,11 +5,12 @@ module.exports = {
   transpileDependencies: [
     'vuetify'
   ],
-  publicPath: process.env.CDN_COMMIT ? gh_url("deepmodeling", "dpgui", process.env.CDN_COMMIT, '') : '/dpgui/',
+  publicPath: process.env.VUE_APP_CDN ? gh_url("deepmodeling", "dpgui", process.env.VUE_APP_CDN, '') : '/dpgui/',
   configureWebpack: {
+    title: "DP-GUI",
     plugins: [
       ...(
-        process.env.CDN_COMMIT
+        process.env.VUE_APP_CDN
           ? [
             new WebpackCdnPlugin({
               modules: [
@@ -18,7 +19,7 @@ module.exports = {
                 { name: '@fortawesome/fontawesome-free', style: 'css/all.min.css', cssOnly: true },
                 { name: 'vue2-storage', var: 'Vue2Storage', path: 'dist/vue2-storage.min.js' },
               ],
-              prodUrl: npm_url(':name', ':version', ':path');
+              prodUrl: npm_url(':name', ':version', ':path'),
             })]
           : [])
     ]

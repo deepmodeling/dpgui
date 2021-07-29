@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib/framework';
-/// #if !process.env.CDN_COMMIT
+/// #if !process.env.VUE_APP_CDN
 import '@fortawesome/fontawesome-free/css/all.css'
 /// #endif
 Vue.use(Vuetify);
