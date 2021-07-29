@@ -29,6 +29,15 @@ module.exports = {
       .tap(args => {
         args[0].title = "DP-GUI";
         return args;
-      })
+      }).end()
+      .module
+      .rule('js')
+      .test(/\.m?jsx?$/)
+      .use('babel-loader')
+      .loader('babel-loader')
+      .end()
+      .use('ifdef-loader')
+      .loader('ifdef-loader')
+      .end()
   }
 }
