@@ -18,6 +18,7 @@ module.exports = {
                 { name: '@fortawesome/fontawesome-free', style: 'css/all.min.css', cssOnly: true },
                 { name: 'vue2-storage', var: 'Vue2StoragePlugin', path: 'dist/vue2-storage.min.js' },
                 { name: 'axios', path: 'dist/axios.min.js' },
+                { name: 'vue-i18n', var: 'VueI18n', path: 'dist/vue-i18n.min.js' },
               ],
               prodUrl: npm_url(':name', ':version', ':path'),
             })]

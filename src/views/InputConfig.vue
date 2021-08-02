@@ -3,14 +3,14 @@
     <v-data-table :headers="headers" :items="items" :items-per-page="10">
       <template v-slot:item.template="{ item }">
         <v-btn :to="item.to">
-          Template
+          {{ $tc('message.template') }}
         </v-btn>
       </template>
       <template v-slot:item.delete="{ item }">
         <v-btn v-if="item.delete" @click="delete_item(item.id)"> Delete </v-btn>
       </template>
     </v-data-table>
-    <v-btn to="/new">Add New Template</v-btn>
+    <v-btn to="/new"> {{ $t('message.add_new_template') }}</v-btn>
   </div>
 </template>
 
@@ -21,9 +21,9 @@ export default {
   data() {
     return {
       headers: [
-        { text: "Name", value: "name" },
-        { text: "Template", value: "template" },
-        { text: "Delete", value: "delete" },
+        { text: this.$t('message.name'), value: "name" },
+        { text: this.$tc('message.template'), value: "template" },
+        { text: this.$t('message.delete'), value: "delete" },
       ],
       items: this.all_items(),
     };

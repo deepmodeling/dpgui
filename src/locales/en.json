@@ -1,0 +1,25 @@
+{
+    "message": {
+        "optional": "(optional)",
+        "typeof": "Type of {name}",
+        "one_element_per_row": "Input one element per row.",
+        "select_type": "Select the type of {name}",
+        "load_example": "Load Example",
+        "load_json": "Load JSON",
+        "select_example": "Select an example",
+        "save_json": "Save JSON",
+        "loading": "Loading...",
+        "invalid_id": "Invalid ID!",
+        "template": "Template | Templates",
+        "template_file": "Template File",
+        "my_template": "My Template",
+        "name": "Name",
+        "add": "Add",
+        "add_new_template": "New Template",
+        "delete": "Delete",
+        "home": "Home",
+        "software_input": "Software Input",
+        "setting": "Setting | Settings",
+        "management": "Management"
+    }
+}

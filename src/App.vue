@@ -2,53 +2,50 @@
   <v-app>
     <v-navigation-drawer v-model="drawer" fixed app>
       <v-list dense>
-        <v-list-item to="/">
-          <v-list-item-icon>
-            <v-icon>fas fa-home</v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-group :value="true" no-action>
-          <template v-slot:activator>
-            <v-list-item-icon>
-              <v-icon>fas fa-keyboard</v-icon>
+        <div v-for="(tool, ii) in tools" :key="ii">
+          <!-- 1st -->
+          <v-list-item v-if="!tool.sub" :to="tool.to">
+            <v-list-item-icon v-if="tool.icon">
+              <v-icon>{{ tool.icon }}</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Software Input</v-list-item-title>
-          </template>
-          <v-list-group :value="true" no-action sub-group>
+            <v-list-item-content>
+              <v-list-item-title>{{ tool.name }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-group v-else :value="true" no-action>
             <template v-slot:activator>
-              <v-list-item-title>Templates</v-list-item-title>
-            </template>
-            <v-list-item v-for="(tool, ii) in tools" :key="ii" :to="tool.to">
-              <v-list-item-content>
-                <v-list-item-title>{{ tool.name }}</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list-group>
-          <v-list-group :value="true" no-action sub-group>
-            <template v-slot:activator>
-              <v-list-item-title>Settings</v-list-item-title>
-            </template>
-            <v-list-item to="/input">
-              <v-list-item-content>
-                <v-list-item-title>Management</v-list-item-title>
-              </v-list-item-content>
               <v-list-item-icon>
-                <v-icon>fas fa-cog</v-icon>
+                <v-icon>{{ tool.icon }}</v-icon>
               </v-list-item-icon>
-            </v-list-item>
-            <v-list-item to="/new">
-              <v-list-item-content>
-                <v-list-item-title>Create Template</v-list-item-title>
-              </v-list-item-content>
-              <v-list-item-icon>
-                <v-icon>fas fa-plus-circle</v-icon>
-              </v-list-item-icon>
-            </v-list-item>
+              <v-list-item-title>{{ tool.name }}</v-list-item-title>
+            </template>
+            <!-- 2st -->
+            <v-list-group
+              v-for="(subtool, jj) in tool.sub"
+              :key="jj"
+              :value="true"
+              no-action
+              sub-group
+            >
+              <template v-slot:activator>
+                <v-list-item-title>{{ subtool.name }}</v-list-item-title>
+              </template>
+              <!-- 3rd -->
+              <v-list-item
+                v-for="(subsubtool, kk) in subtool.sub"
+                :key="kk"
+                :to="subsubtool.to"
+              >
+                <v-list-item-content>
+                  <v-list-item-title>{{ subsubtool.name }}</v-list-item-title>
+                </v-list-item-content>
+                <v-list-item-icon v-if="subsubtool.icon">
+                  <v-icon>{{ subsubtool.icon }}</v-icon>
+                </v-list-item-icon>
+              </v-list-item>
+            </v-list-group>
           </v-list-group>
-        </v-list-group>
+        </div>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar app color="primary" dark>
@@ -82,6 +79,41 @@ export default {
   },
   methods: {
     navi: function () {
+      const templates = this.templates();
+      return [
+        {
+          name: this.$t("message.home"),
+          icon: "fas fa-home",
+          to: "/",
+        },
+        {
+          name: this.$t("message.software_input"),
+          icon: "fas fa-keyboard",
+          sub: [
+            {
+              name: this.$tc("message.template", templates.length),
+              sub: templates,
+            },
+            {
+              name: this.$tc("message.setting", 2),
+              sub: [
+                {
+                  name: this.$t("message.management"),
+                  icon: "fas fa-cog",
+                  to: "/input",
+                },
+                {
+                  name: this.$t("message.add_new_template"),
+                  icon: "fas fa-plus-circle",
+                  to: "/new",
+                },
+              ],
+            },
+          ],
+        },
+      ];
+    },
+    templates: function () {
       return [
         ...Object.entries(args).map(([kk, vv]) => ({
           name: vv.name,
@@ -95,7 +127,7 @@ export default {
         ),
       ];
     },
-    update_navi: function() {
+    update_navi: function () {
       this.tools = this.navi();
     },
   },

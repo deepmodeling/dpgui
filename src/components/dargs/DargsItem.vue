@@ -17,15 +17,15 @@
         <v-row v-if="jdata.type.length > 1">
           <v-col cols="auto">
             <v-subheader
-              >Type of {{ jdata.name }}
-              <small v-if="jdata.optional">(optional)</small></v-subheader
+              >{{ $t('message.typeof', { name: jdata.name }) }}
+              <small v-if="jdata.optional">{{ $t('message.optional') }}</small></v-subheader
             >
           </v-col>
           <v-col>
             <v-select
               :items="jdata.type"
               v-model="select_type"
-              :hint="'Select the type of ' + jdata.name"
+              :hint="$t('message.select_type', {name: jdata.name})"
             ></v-select>
           </v-col>
         </v-row>
@@ -33,7 +33,7 @@
         <v-textarea
           v-if="select_type == 'list'"
           v-model="value"
-          :hint="'Input one element per row.\n' + jdata.doc"
+          :hint="$t('message.one_element_per_row') + '\n' + jdata.doc"
           :placeholder="select_type"
           :rules="!jdata.optional ? rules.required : []"
           clearable
@@ -41,7 +41,7 @@
         >
           <template v-slot:label>
             <div>
-              {{ jdata.name }} <small v-if="jdata.optional">(optional)</small>
+              {{ jdata.name }} <small v-if="jdata.optional">{{ $t('message.optional') }}</small>
             </div>
           </template>
           <template v-slot:message="{ message, key }">
@@ -63,7 +63,7 @@
         >
           <template v-slot:label>
             <div>
-              {{ jdata.name }} <small v-if="jdata.optional">(optional)</small>
+              {{ jdata.name }} <small v-if="jdata.optional">{{ $t('message.optional') }}</small>
             </div>
           </template>
           <template v-slot:message="{ message, key }">
@@ -81,7 +81,7 @@
         >
           <template v-slot:label>
             <div>
-              {{ jdata.name }} <small v-if="jdata.optional">(optional)</small>
+              {{ jdata.name }} <small v-if="jdata.optional">{{ $t('message.optional') }}</small>
             </div>
           </template>
           <template v-slot:message="{ message, key }">

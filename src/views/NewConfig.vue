@@ -1,17 +1,17 @@
 <template>
   <div>
     <v-file-input
-      label="Template File"
+      :label="$t('message.template_file')"
       v-model="file"
       accept=".json"
     ></v-file-input>
     <v-text-field
-      placeholder="My Template"
+      :placeholder="$t('message.my_template')"
       v-model="name"
-      label="Name"
+      :label="$t('message.name')"
       clearable
     ></v-text-field>
-    <v-btn @click="add"><v-icon>fas fa-plus</v-icon> Add</v-btn>
+    <v-btn @click="add"><v-icon>fas fa-plus</v-icon>{{ $t('message.add') }}</v-btn>
   </div>
 </template>
 

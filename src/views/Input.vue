@@ -3,9 +3,9 @@
     <dargs v-if="jdata" :jdata="jdata" :examples="examples" />
     <div v-else-if="loading" class="text-center">
       <v-progress-circular indeterminate color="primary"></v-progress-circular>
-      Loading...
+      {{ $t('message.loading') }}
     </div>
-    <div v-else class="text-center">Invalid ID!</div>
+    <div v-else class="text-center">{{ $t('message.invalid_id') }}</div>
   </div>
 </template>
 

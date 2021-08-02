@@ -1,7 +1,7 @@
 <template>
   <div class="dargs">
     <v-file-input
-      label="Load JSON"
+      :label="$t('message.load_json')"
       v-model="file"
       @change="from_json_file(file)"
       accept=".json"
@@ -13,16 +13,16 @@
           :items="examples"
           item-text="name"
           item-value="url"
-          placeholder="Select an example"
-          hint="Select an example"
+          :placeholder="$t('message.select_example')"
+          :hint="$t('message.select_example')"
         ></v-select>
       </v-col>
       <v-col cols="auto">
-        <v-btn v-on:click="from_url(example_select)">Load Example</v-btn></v-col
+        <v-btn v-on:click="from_url(example_select)">{{ $t('message.load_example') }}</v-btn></v-col
       >
     </v-row>
     <DargsItem :jdata="jdata" ref="item" />
-    <v-btn block v-on:click="to_json()"> Save JSON </v-btn>
+    <v-btn block v-on:click="to_json()">{{ $t('message.save_json') }}</v-btn>
   </div>
 </template>
 
