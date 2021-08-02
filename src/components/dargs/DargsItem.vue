@@ -185,16 +185,6 @@ export default {
             .trim()
             .split("\n")
             .map((v) => {
-              if (v.toLowerCase() == "null") {
-                return null;
-              } else if (v.toLowerCase() == "true") {
-                return true;
-              } else if (v.toLowerCase() == "false") {
-                return false;
-              } else if (!isNaN(v)) {
-                // number
-                return Number.parseFloat(v);
-              }
               try {
                 return JSON.parse(v);
               } catch (e) {
@@ -285,7 +275,7 @@ export default {
         if (this.jdata.type.includes("list") && Array.isArray(obj)) {
           // list -> multiple line str
           this.select_type = "list";
-          this.value = obj.map(String).join("\n");
+          this.value = obj.map(JSON.stringify).join("\n");
         } else if (this.jdata.type.includes("str") && typeof obj == "string") {
           this.select_type = "str";
           this.value = obj;
