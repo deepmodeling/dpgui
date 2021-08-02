@@ -1,6 +1,6 @@
 <template>
   <div>
-    <dargs v-if="jdata" :jdata="jdata" />
+    <dargs v-if="jdata" :jdata="jdata" :examples="examples" />
     <div v-else-if="loading" class="text-center">
       <v-progress-circular indeterminate color="primary"></v-progress-circular>
       Loading...
@@ -15,11 +15,7 @@ import args from "../args/args.json";
 export default {
   name: "Input",
   data() {
-    const { loading, jdata } = this.load(this.$route.params.id);
-    return {
-      jdata,
-      loading,
-    };
+    return this.load(this.$route.params.id);
   },
   components: {
     dargs,
@@ -27,6 +23,11 @@ export default {
   methods: {
     load: function (id) {
       const that = this;
+      const prop = {
+        loading: false,
+        jdata: null,
+        examples: null,
+      };
       if (id) {
         const aa = args[id];
         if (aa) {
@@ -38,25 +39,26 @@ export default {
             /* webpackChunkName: "args" */
             `../args/${aa.fn}`
           ).then((jdata) => {
-            that.jdata = jdata.default;
-            that.loading = false;
+            Object.assign(that, {
+              jdata: jdata.default,
+              loading: false,
+              examples: aa.examples,
+            });
           });
-          return { loading: true, jdata: null };
+          Object.assign(prop, { loading: true });
         } else {
           // custom?
           const bb = this.$storage.get("CustomTemplate", {})[id];
           if (bb) {
-            return { loading: false, jdata: bb.obj };
+            Object.assign(prop, { jdata: bb.obj });
           }
-          return { loading: false, jdata: null };
         }
       }
+      return prop;
     },
   },
   beforeRouteUpdate(to, from, next) {
-    const { loading, jdata } = this.load(to.params.id);
-    this.loading = loading;
-    this.jdata = jdata;
+    Object.assign(this, this.load(to.params.id));
     next();
   },
 };

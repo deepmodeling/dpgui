@@ -17,6 +17,7 @@ module.exports = {
                 { name: 'vue-router', var: 'VueRouter', path: 'dist/vue-router.min.js' },
                 { name: '@fortawesome/fontawesome-free', style: 'css/all.min.css', cssOnly: true },
                 { name: 'vue2-storage', var: 'Vue2StoragePlugin', path: 'dist/vue2-storage.min.js' },
+                { name: 'axios', path: 'dist/axios.min.js' },
               ],
               prodUrl: npm_url(':name', ':version', ':path'),
             })]

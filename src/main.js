@@ -7,6 +7,8 @@ import { Plugin } from 'vue2-storage';
 /// #else
 // #code import Plugin from 'vue2-storage'
 /// #endif
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 import './registerServiceWorker'
 
 Vue.config.productionTip = false
@@ -17,6 +19,8 @@ Vue.use(Plugin, {
   ttl: 0, // for ever
   replacer: (key, value) => value,
 });
+
+Vue.use(VueAxios, axios);
 
 new Vue({
   vuetify,

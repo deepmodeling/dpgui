@@ -12,7 +12,7 @@ const routes = [
   },
   {
     path: '/input',
-    name: 'User Input',
+    name: 'User Input Config',
     component: () => import(/* webpackChunkName: "input" */ '../views/InputConfig.vue')
   },
   {

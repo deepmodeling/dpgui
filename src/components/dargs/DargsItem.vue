@@ -324,7 +324,7 @@ export default {
           obj[this.jdata.flag_name] || this.jdata.default_tag
         );
         // loop alias
-        if (tab < -1)
+        if (tab < 0)
           this.$refs["subitem"].some((vv, index) => {
             if (
               vv.jdata.alias.includes(

@@ -3,9 +3,24 @@
     <v-file-input
       label="Load JSON"
       v-model="file"
-      @change="from_json"
+      @change="from_json_file(file)"
       accept=".json"
     ></v-file-input>
+    <v-row v-if="examples">
+      <v-col>
+        <v-select
+          v-model="example_select"
+          :items="examples"
+          item-text="name"
+          item-value="url"
+          placeholder="Select an example"
+          hint="Select an example"
+        ></v-select>
+      </v-col>
+      <v-col cols="auto">
+        <v-btn v-on:click="from_url(example_select)">Load Example</v-btn></v-col
+      >
+    </v-row>
     <DargsItem :jdata="jdata" ref="item" />
     <v-btn block v-on:click="to_json()"> Save JSON </v-btn>
   </div>
@@ -18,10 +33,12 @@ export default {
   name: "dargs",
   props: {
     jdata: [Object, Array],
+    examples: [Array],
   },
   data() {
     return {
       file: null,
+      example_select: null,
     };
   },
   components: {
@@ -60,20 +77,45 @@ export default {
       a.dispatchEvent(e);
     },
     /**
+     * Load from object.
+     */
+    from_obj: function (obj) {
+      if (!obj) return;
+      const item = this.$refs["item"];
+      item.load(obj);
+    },
+    /**
      * Load from JSON.
      */
-    from_json: function () {
-      const item = this.$refs["item"];
+    from_json: function (str) {
+      if (!str) return;
+      const obj = JSON.parse(str);
+      this.from_obj(obj);
+    },
+    /**
+     * Load from JSON file.
+     */
+    from_json_file: function (file) {
+      const that = this;
       // https://stackoverflow.com/a/26298948
-      if (!this.file) {
+      if (!file) {
         return;
       }
       const reader = new FileReader();
       reader.onload = function (e) {
-        const obj = JSON.parse(e.target.result);
-        item.load(obj);
+        that.from_json(e.target.result);
       };
-      reader.readAsText(this.file);
+      reader.readAsText(file);
+    },
+    /**
+     * Load from URL.
+     */
+    from_url: function (url) {
+      const that = this;
+      if (url)
+        this.axios.get(url).then((jdata) => {
+          that.from_obj(jdata.data);
+        });
     },
   },
 };
