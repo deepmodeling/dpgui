@@ -41,6 +41,10 @@
             }
         ]
     },
+    "dpgen-machine": {
+        "name": "DP-GEN Machine",
+		"fn": "dpgen-machine.json"
+    },
     "dpdispatcher-machine": {
         "name": "DPDispatcher Machine",
         "fn": "dpdispatcher-machine.json"
