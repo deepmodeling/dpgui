@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "https://cdn.jsdelivr.net/gh/deepmodeling/dpgui@gh-pages/precache-manifest.6a46cd47e8b797d98fe1693425c42b9b.js"
+  "https://cdn.jsdelivr.net/gh/deepmodeling/dpgui@gh-pages/precache-manifest.e027cb7dbdcc7f12f32af0515d3f7137.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "dpgui"});

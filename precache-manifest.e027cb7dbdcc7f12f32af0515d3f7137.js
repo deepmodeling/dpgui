@@ -8,16 +8,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://cdn.jsdelivr.net/gh/deepmodeling/dpgui@gh-pages/css/input.80eb898a.css"
   },
   {
-    "revision": "5e14ec79be6917687adf8d3247c53d76",
+    "revision": "9e3c5e4b945e9ca232cdca4c33136130",
     "url": "https://cdn.jsdelivr.net/gh/deepmodeling/dpgui@gh-pages/index.html"
   },
   {
-    "revision": "590bb66f9b751ac3b3f6",
-    "url": "https://cdn.jsdelivr.net/gh/deepmodeling/dpgui@gh-pages/js/app.16720c8f.js"
+    "revision": "0316282e3f5fee1676a9",
+    "url": "https://cdn.jsdelivr.net/gh/deepmodeling/dpgui@gh-pages/js/app.9ef44a1d.js"
   },
   {
-    "revision": "573140dba749071bcc94",
-    "url": "https://cdn.jsdelivr.net/gh/deepmodeling/dpgui@gh-pages/js/args2.2e8f4a4a.js"
+    "revision": "574996ed2fd5288a1081",
+    "url": "https://cdn.jsdelivr.net/gh/deepmodeling/dpgui@gh-pages/js/args2.1aed447f.js"
   },
   {
     "revision": "5ece6bf7177b00f7f8bc",
