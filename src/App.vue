@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import args from "./args/args.json";
+import args from "@deepmodeling/args";
 
 export default {
   name: "App",

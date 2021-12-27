@@ -11,7 +11,7 @@
 
 <script>
 import dargs from "../components/dargs/dargs.vue";
-import args from "../args/args.json";
+import args from "@deepmodeling/args";
 export default {
   name: "Input",
   data() {
@@ -37,7 +37,7 @@ export default {
             /* webpackExclude: /^args\.json$/ */
             /* webpackMode: "lazy" */
             /* webpackChunkName: "args" */
-            `../args/${aa.fn}`
+            `@deepmodeling/args/args/${aa.fn}`
           ).then((jdata) => {
             Object.assign(that, {
               jdata: jdata.default,
