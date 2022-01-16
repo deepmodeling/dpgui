@@ -4,16 +4,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://cdn.jsdelivr.net/gh/deepmodeling/dpgui@gh-pages/css/chunk-vendors.a41ffc3a.css"
   },
   {
-    "revision": "55b7bd331c6bd04a295b",
+    "revision": "1d7062431521dc8de0c0",
     "url": "https://cdn.jsdelivr.net/gh/deepmodeling/dpgui@gh-pages/css/input.80eb898a.css"
   },
   {
-    "revision": "283b5ca7929bdcef9baa896f7f433773",
+    "revision": "1695fe69734564922820550ac5730cd6",
     "url": "https://cdn.jsdelivr.net/gh/deepmodeling/dpgui@gh-pages/index.html"
   },
   {
-    "revision": "d2997b408da8ecbbf768",
-    "url": "https://cdn.jsdelivr.net/gh/deepmodeling/dpgui@gh-pages/js/app.1755eb17.js"
+    "revision": "0155b3ef1415058f1b05",
+    "url": "https://cdn.jsdelivr.net/gh/deepmodeling/dpgui@gh-pages/js/app.a2c56247.js"
   },
   {
     "revision": "2cb6d0958c5172210990",
@@ -40,8 +40,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://cdn.jsdelivr.net/gh/deepmodeling/dpgui@gh-pages/js/chunk-vendors.53600237.js"
   },
   {
-    "revision": "55b7bd331c6bd04a295b",
-    "url": "https://cdn.jsdelivr.net/gh/deepmodeling/dpgui@gh-pages/js/input.3edaaf11.js"
+    "revision": "1d7062431521dc8de0c0",
+    "url": "https://cdn.jsdelivr.net/gh/deepmodeling/dpgui@gh-pages/js/input.d9f6905e.js"
   },
   {
     "revision": "35da3532b61f3af0ef6237fd7837e92e",
