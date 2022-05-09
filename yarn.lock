@@ -806,9 +806,10 @@
   resolved "https://registry.yarnpkg.com/@deepmodeling/args/-/args-0.0.3.tgz#5455e5f61ec2e1079e41a57ca5dd43e85b11a129"
   integrity sha512-1y2qzbN0RsQ6O/yalSgwTzje2hjIH505AdJr9V9RuMhruGLQHoc2xpgnI77TpzO32u+gcoZ2W2WCaHJ4j95JdA==
 
-"@fortawesome/fontawesome-free@^5.15.3":
-  version "5.15.3"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.3.tgz#c36ffa64a2a239bf948541a97b6ae8d729e09a9a"
+"@fortawesome/fontawesome-free@^6.1.1":
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-6.1.1.tgz#bf5d45611ab74890be386712a0e5d998c65ee2a1"
+  integrity sha512-J/3yg2AIXc9wznaVqpHVX3Wa5jwKovVF0AMYSnbmcXTiL3PpRPfF58pzWucCwEiCJBp+hCNRLWClTomD8SseKg==
 
 "@hapi/address@2.x.x":
   version "2.1.4"
