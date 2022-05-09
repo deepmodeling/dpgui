@@ -115,6 +115,27 @@
               </v-list-item-content>
             </v-list-item>
           </v-list>
+
+          <!-- if length == 0, assume it allows any arguments -->
+          <!-- textarea for dict -->
+          <v-textarea
+            v-else-if="!Object.keys(jdata.sub_fields).length && !Object.keys(jdata.sub_variants).length"
+            v-model="value"
+            :hint="jdata.doc"
+            :placeholder="select_type"
+            :rules="!jdata.optional ? rules.required : []"
+            clearable
+            @input="up"
+          >
+            <template v-slot:label>
+              <div>
+                {{ jdata.name }} <small v-if="jdata.optional">{{ $t('message.optional') }}</small>
+              </div>
+            </template>
+            <template v-slot:message="{ message, key }">
+              <div v-html="message.replaceAll('\n', '<br/>')" :key="key"></div>
+            </template>
+          </v-textarea>
         </div>
       </v-col>
     </v-row>
@@ -220,9 +241,13 @@ export default {
                 ...this.$refs["subvariant"].map((vv) => vv.dvalue())
               )
             : Object();
+          const any_arguments = (!Object.keys(this.jdata.sub_fields).length && !Object.keys(this.jdata.sub_variants).length) 
+            ? JSON.parse(this.value)
+            : Object();
           return {
             ...sub_fields,
             ...sub_variants,
+            ...any_arguments,
           };
         }
       } else if (this.jdata.object == "Variant") {
@@ -308,6 +333,9 @@ export default {
             this.$refs["subvariant"].forEach((vv) => {
               vv.load(obj);
             });
+          else if (!this.$refs["subitem"] && !this.$refs["subvariant"])
+            // both subfields and subvariants are empty
+            this.value = JSON.stringify(obj);
         }
       } else if (this.jdata.object == "Variant") {
         var tab = Object.keys(this.jdata.choice_dict).indexOf(
