@@ -801,10 +801,10 @@
     "@babel/helper-validator-identifier" "^7.14.8"
     to-fast-properties "^2.0.0"
 
-"@deepmodeling/args@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@deepmodeling/args/-/args-0.0.1.tgz#6ba07552acdba834b461cfb82559c81670856eab"
-  integrity sha512-36H9aiQYKMGYyMMMh+l0SH2jFjn7WrDrVmE8ZArBeRdeV7lJrWRku8T24ZXDVwDxpriaoOde9lbJnxq4p7SkXg==
+"@deepmodeling/args@0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@deepmodeling/args/-/args-0.0.3.tgz#5455e5f61ec2e1079e41a57ca5dd43e85b11a129"
+  integrity sha512-1y2qzbN0RsQ6O/yalSgwTzje2hjIH505AdJr9V9RuMhruGLQHoc2xpgnI77TpzO32u+gcoZ2W2WCaHJ4j95JdA==
 
 "@fortawesome/fontawesome-free@^5.15.3":
   version "5.15.3"
