@@ -3961,9 +3961,10 @@ ieee754@^1.1.4:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
 
-ifdef-loader@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/ifdef-loader/-/ifdef-loader-2.3.0.tgz#cc8d7c52bdd83de7621bde90f00f256bdf56b7cb"
+ifdef-loader@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/ifdef-loader/-/ifdef-loader-2.3.2.tgz#d08972f53c32e90dce6722b6efb9b3a91717cfef"
+  integrity sha512-kH9bHPrfIFxLpq3XEruJqSlHXch2nOljKIDRS/6MU5LDZTyHeaSWVf04wNYX+8RT+NDmeS8Vm5HwZ7akkXo8ig==
   dependencies:
     loader-utils "^1.1.0"
 

@@ -29,7 +29,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "ifdef-loader": "^2.3.0",
+    "ifdef-loader": "^2.3.2",
     "jsdelivr_url": "^0.0.1",
     "sass": "~1.32.0",
     "sass-loader": "^10.0.0",
