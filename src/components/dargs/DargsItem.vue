@@ -217,7 +217,7 @@ export default {
             if (this.select_type == "str") return "";
             else return 0;
           }
-          if (!this.select_type == "str") {
+          if (!(this.select_type == "str")) {
             return Number.parseFloat(this.value);
           }
           return this.value;
