@@ -1,11 +1,11 @@
 const WebpackCdnPlugin = require('webpack-cdn-plugin');
-const { gh_url, npm_url } = require('jsdelivr_url');
+const { npm_url } = require('unpkg_url');
 
 module.exports = {
   transpileDependencies: [
     'vuetify'
   ],
-  publicPath: process.env.VUE_APP_CDN ? gh_url("deepmodeling", "dpgui", process.env.VUE_APP_CDN, '') : '/dpgui/',
+  publicPath: '/dpgui/',
   configureWebpack: {
     plugins: [
       ...(
