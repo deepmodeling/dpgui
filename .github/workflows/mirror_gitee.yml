@@ -2,7 +2,7 @@ name: Mirror to Gitee Repo
 on: [ push, delete, create ]
 jobs:
   git-mirror:
-    if: ${{ github.repository_owner == 'deepmodeling' && !startsWith(github.event.inputs.from_branch, 'dependabot/') }}
+    if: ${{ github.repository_owner == 'deepmodeling' && !startsWith(github.ref, 'refs/heads/dependabot/') }}
     uses: deepmodeling/workflows/.github/workflows/mirror_gitee.yml@main
     secrets:
       SYNC_GITEE_PRIVATE_KEY: ${{ secrets.SYNC_GITEE_PRIVATE_KEY }}
