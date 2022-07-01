@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/dpgui/precache-manifest.c19180660e9cafa0da3b27d3127d152a.js"
+  "/dpgui/precache-manifest.f6b8d619d3329f367a3e20247debc16c.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "dpgui"});
