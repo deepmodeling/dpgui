@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^6.1.1",
-    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-babel": "~5.0.6",
     "@vue/cli-plugin-eslint": "~4.5.17",
     "@vue/cli-plugin-pwa": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
