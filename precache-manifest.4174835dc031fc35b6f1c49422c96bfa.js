@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "eb1cf66697bae3fb07b8",
+    "revision": "3f87f919d4130aa17430",
     "url": "/dpgui/css/chunk-vendors.a6cdea08.css"
   },
   {
-    "revision": "53a310ab846fd337dc90",
+    "revision": "5513db0e7cda825b8d39",
     "url": "/dpgui/css/input.6b8fac6f.css"
   },
   {
-    "revision": "c17390b8cbd19f13a3a4e5d8c9d9f4d8",
+    "revision": "3568b9c60c61a88aed1b2d19d8ff7b1c",
     "url": "/dpgui/index.html"
   },
   {
-    "revision": "a7c968f707576ee8d057",
-    "url": "/dpgui/js/app.aa57b16f.js"
+    "revision": "4b01bd7bb94402eebbf5",
+    "url": "/dpgui/js/app.67d5f3a9.js"
   },
   {
     "revision": "05bf744c132ea8f5f4a3",
@@ -36,12 +36,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/dpgui/js/args8.43362f98.js"
   },
   {
-    "revision": "eb1cf66697bae3fb07b8",
-    "url": "/dpgui/js/chunk-vendors.17c80d23.js"
+    "revision": "3f87f919d4130aa17430",
+    "url": "/dpgui/js/chunk-vendors.858dc81b.js"
   },
   {
-    "revision": "53a310ab846fd337dc90",
-    "url": "/dpgui/js/input.00cd6dfd.js"
+    "revision": "5513db0e7cda825b8d39",
+    "url": "/dpgui/js/input.c133bde4.js"
   },
   {
     "revision": "35da3532b61f3af0ef6237fd7837e92e",
