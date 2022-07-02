@@ -1558,11 +1558,18 @@
     webpack "^4.0.0"
     workbox-webpack-plugin "^4.3.1"
 
-"@vue/cli-plugin-router@^4.5.13", "@vue/cli-plugin-router@~4.5.0":
+"@vue/cli-plugin-router@^4.5.13":
   version "4.5.13"
   resolved "https://registry.yarnpkg.com/@vue/cli-plugin-router/-/cli-plugin-router-4.5.13.tgz#0b67c8898a2bf132941919a2a2e5f3aacbd9ffbe"
   dependencies:
     "@vue/cli-shared-utils" "^4.5.13"
+
+"@vue/cli-plugin-router@~5.0.6":
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-router/-/cli-plugin-router-5.0.6.tgz#b65d39845a8a53dc51b9c263bf75bdd24a53d8be"
+  integrity sha512-5ikUdfsSoKqpBhB5GhGYijH6mJnU+ZGqDv3QBf0brDeeh7PhClntxNAOLkB73c+LNxjBrlNCTkItuByF+AD29w==
+  dependencies:
+    "@vue/cli-shared-utils" "^5.0.6"
 
 "@vue/cli-plugin-vuex@^4.5.13":
   version "4.5.13"
