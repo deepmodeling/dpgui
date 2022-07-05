@@ -13,7 +13,7 @@
     "core-js": "^3.23.3",
     "register-service-worker": "^1.7.1",
     "unpkg_url": "^0.0.1",
-    "vue": "^2.7.0",
+    "vue": "^2.7.2",
     "vue-axios": "^3.4.1",
     "vue-i18n": "^8.27.2",
     "vue-router": "^3.5.4",
@@ -34,7 +34,7 @@
     "sass": "~1.53.0",
     "sass-loader": "^10.0.0",
     "vue-cli-plugin-vuetify": "~2.4.8",
-    "vue-template-compiler": "^2.7.0",
+    "vue-template-compiler": "^2.7.2",
     "vuetify-loader": "^1.7.3",
     "webpack-cdn-plugin": "^3.3.1"
   },
