@@ -1,5 +1,8 @@
 name: Mirror to Gitee Repo
-on: [ push ]
+on:
+  push:
+    branches:
+      - master
 jobs:
   git-mirror:
     uses: deepmodeling/workflows/.github/workflows/mirror_gitee.yml@main
