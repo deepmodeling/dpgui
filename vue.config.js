@@ -5,7 +5,7 @@ module.exports = {
   transpileDependencies: [
     'vuetify'
   ],
-  publicPath: '/dpgui/',
+  publicPath: process.env.BASE_URL ? process.env.BASE_URL : '/dpgui/',
   configureWebpack: {
     plugins: [
       ...(
