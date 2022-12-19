@@ -35,6 +35,7 @@
                 v-for="(subsubtool, kk) in subtool.sub"
                 :key="kk"
                 :to="subsubtool.to"
+                class="subsubitem"
               >
                 <v-list-item-content>
                   <v-list-item-title>{{ subsubtool.name }}</v-list-item-title>
@@ -133,3 +134,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.subsubitem {
+  padding-left: 25px!important;
+}
+</style>
