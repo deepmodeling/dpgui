@@ -5396,7 +5396,7 @@ __metadata:
     unpkg_url: ^0.0.1
     vue: ^2.7.14
     vue-axios: ^3.5.2
-    vue-cli-plugin-vuetify: ~2.4.8
+    vue-cli-plugin-vuetify: ~2.5.8
     vue-i18n: ^8.27.2
     vue-router: ^3.6.5
     vue-template-compiler: ^2.7.14
@@ -12918,19 +12918,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-cli-plugin-vuetify@npm:~2.4.8":
-  version: 2.4.8
-  resolution: "vue-cli-plugin-vuetify@npm:2.4.8"
+"vue-cli-plugin-vuetify@npm:~2.5.8":
+  version: 2.5.8
+  resolution: "vue-cli-plugin-vuetify@npm:2.5.8"
   dependencies:
     null-loader: ^4.0.1
     semver: ^7.1.2
     shelljs: ^0.8.3
+  peerDependencies:
+    webpack: ^4.0.0 || ^5.0.0
   peerDependenciesMeta:
     sass-loader:
       optional: true
     vuetify-loader:
       optional: true
-  checksum: 50689d04887d41e23a602dcd930a2835537578b89b263a815d0f23761c34e61611d3c54f2e5f32ee425ecff7d422130812ab01cc2f62b8fca63f56c1898b9fa0
+  checksum: d71654fb4ab0518a6bebb39c1de266f2d4e5a113bad60652369d8187d8f9fc7570dc2e616366d82b9965bb10bd856ea131d712ef16e13a13007141a0bada2a56
   languageName: node
   linkType: hard
 
