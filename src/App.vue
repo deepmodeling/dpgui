@@ -137,6 +137,6 @@ export default {
 
 <style>
 .subsubitem {
-  padding-left: 25px;
+  padding-left: 25px!important;
 }
 </style>
