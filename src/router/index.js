@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home'
+import HomeView from '../views/HomeView'
 
 Vue.use(VueRouter)
 
@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: HomeView
   },
   {
     path: '/input',
@@ -18,14 +18,14 @@ const routes = [
   {
     path: '/input/:id',
     name: 'User Input',
-    component: () => import(/* webpackChunkName: "input" */ '../views/Input.vue')
+    component: () => import(/* webpackChunkName: "input" */ '../views/InputView.vue')
   },
   {
     path: '/new',
     name: 'New',
     component: () => import(/* webpackChunkName: "input" */ '../views/NewConfig.vue')
   },
-  { path: '*', component: Home },
+  { path: '*', component: HomeView },
 ]
 
 const router = new VueRouter({

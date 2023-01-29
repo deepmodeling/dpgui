@@ -1,12 +1,12 @@
 <template>
   <div>
     <v-data-table :headers="headers" :items="items" :items-per-page="10">
-      <template v-slot:item.template="{ item }">
+      <template v-slot:[`item.template`]="{ item }">
         <v-btn :to="item.to">
           {{ $tc('message.template') }}
         </v-btn>
       </template>
-      <template v-slot:item.delete="{ item }">
+      <template v-slot:[`item.delete`]="{ item }">
         <v-btn v-if="item.delete" @click="delete_item(item.id)"> Delete </v-btn>
       </template>
     </v-data-table>

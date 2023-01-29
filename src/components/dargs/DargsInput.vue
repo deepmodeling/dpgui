@@ -30,7 +30,7 @@
 import DargsItem from "./DargsItem.vue";
 
 export default {
-  name: "dargs",
+  name: "DargsInput",
   props: {
     jdata: [Object, Array],
     examples: [Array],

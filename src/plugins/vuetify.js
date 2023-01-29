@@ -1,12 +1,13 @@
 import Vue from 'vue';
-import Vuetify from 'vuetify/lib/framework';
+import createVuetify from 'vuetify';
 /// #if !process.env.VUE_APP_CDN
 import '@fortawesome/fontawesome-free/css/all.css'
 /// #endif
-Vue.use(Vuetify);
-
-export default new Vuetify({
+const vuetify = createVuetify({
   icons: {
     iconfont: 'fa',
   },
-});
+})
+Vue.use(vuetify);
+
+export default vuetify;
