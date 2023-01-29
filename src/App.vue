@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" fixed app style="width: 512px">
+    <v-navigation-drawer v-model="drawer" fixed app :width="512">
       <v-list dense>
         <div v-for="(tool, ii) in tools" :key="ii">
           <!-- 1st -->
