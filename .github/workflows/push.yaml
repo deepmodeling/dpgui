@@ -18,8 +18,6 @@ jobs:
         cache: 'yarn'
     - run: yarn install
     - run: yarn build
-      env:
-        VUE_APP_CDN: gh-pages
     - run: ln -s index.html dist/404.html
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@releases/v3
