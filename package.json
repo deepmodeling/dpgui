@@ -37,7 +37,6 @@
     "sass": "~1.55.0",
     "sass-loader": "^10.0.0",
     "stream-browserify": "^3.0.0",
-    "webpack-cdn-plugin": "^3.3.1",
     "webpack-plugin-vuetify": "^2.0.1"
   },
   "eslintConfig": {
