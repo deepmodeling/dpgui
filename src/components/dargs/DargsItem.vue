@@ -31,7 +31,7 @@
           <v-col cols="auto">
             <v-list-subheader>
               {{ $t('message.typeof', { name: jdata.name }) }}
-              <small v-if="jdata.optional">{{ $t('message.optional') }}</small>
+              <small v-if="jdata.optional">{{ jdata.default ? $t('message.optional_default', { default: jdata.default }) : $t('message.optional') }}</small>
             </v-list-subheader>
           </v-col>
           <v-col>
@@ -54,7 +54,7 @@
         >
           <template #label>
             <div>
-              {{ jdata.name }} <small v-if="jdata.optional">{{ $t('message.optional') }}</small>
+              {{ jdata.name }} <small v-if="jdata.optional">{{ jdata.default ? $t('message.optional_default', { default: jdata.default }) : $t('message.optional') }}</small>
             </div>
           </template>
           <template #message="{ message, key }">
@@ -79,7 +79,7 @@
         >
           <template #label>
             <div>
-              {{ jdata.name }} <small v-if="jdata.optional">{{ $t('message.optional') }}</small>
+              {{ jdata.name }} <small v-if="jdata.optional">{{ jdata.default ? $t('message.optional_default', { default: jdata.default }) : $t('message.optional') }}</small>
             </div>
           </template>
           <template #message="{ message, key }">
@@ -99,7 +99,7 @@
         >
           <template #label>
             <div>
-              {{ jdata.name }} <small v-if="jdata.optional">{{ $t('message.optional') }}</small>
+              {{ jdata.name }} <small v-if="jdata.optional">{{ jdata.default ? $t('message.optional_default', { default: jdata.default }) : $t('message.optional') }}</small>
             </div>
           </template>
           <template #message="{ message, key }">
@@ -159,7 +159,7 @@
           >
             <template #label>
               <div>
-                {{ jdata.name }} <small v-if="jdata.optional">{{ $t('message.optional') }}</small>
+                {{ jdata.name }} <small v-if="jdata.optional">{{ jdata.default ? $t('message.optional_default', { default: jdata.default }) : $t('message.optional') }}</small>
               </div>
             </template>
             <template #message="{ message, key }">

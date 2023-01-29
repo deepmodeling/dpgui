@@ -1,6 +1,7 @@
 {
     "message": {
         "optional": "(optional)",
+        "optional_default": "(optional, default: {default})",
         "typeof": "Type of {name}",
         "one_element_per_row": "Input one element per row.",
         "select_type": "Select the type of {name}",
