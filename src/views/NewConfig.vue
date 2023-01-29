@@ -35,7 +35,7 @@ export default {
           .update(e.target.result)
           .digest("hex");
         const obj = JSON.parse(e.target.result);
-        const curr = that.$storage.get("CustomTemplate", {});
+        const curr = that.$storage.getStorageSync("CustomTemplate", {});
         curr[hash] = {
           name: name,
           obj: obj,

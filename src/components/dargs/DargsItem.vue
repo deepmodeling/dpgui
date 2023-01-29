@@ -3,9 +3,7 @@
   <div class="w-100" v-if="Array.isArray(jdata)">
     <v-list>
       <v-list-item v-for="item in jdata" :key="item.name">
-        <v-list-item-content>
-          <DargsItem :jdata="item" ref="subitem" />
-        </v-list-item-content>
+        <DargsItem :jdata="item" ref="subitem" />
       </v-list-item>
     </v-list>
   </div>
@@ -16,9 +14,9 @@
       ><v-col>
         <v-row v-if="jdata.type.length > 1">
           <v-col cols="auto">
-            <v-subheader
+            <v-list-subheader
               >{{ $t('message.typeof', { name: jdata.name }) }}
-              <small v-if="jdata.optional">{{ $t('message.optional') }}</small></v-subheader
+              <small v-if="jdata.optional">{{ $t('message.optional') }}</small></v-list-subheader
             >
           </v-col>
           <v-col>
@@ -98,9 +96,7 @@
             <v-list-item-subtitle> {{ jdata.doc }}</v-list-item-subtitle>
             <v-list-item v-for="item in jdata.sub_fields" :key="item.name">
               <!-- jdata.sub_fields is object -->
-              <v-list-item-content>
-                <DargsItem :jdata="item" ref="subitem" />
-              </v-list-item-content>
+              <DargsItem :jdata="item" ref="subitem" />
             </v-list-item>
           </v-list>
 
@@ -110,9 +106,7 @@
             <v-list-item-subtitle> {{ jdata.doc }}</v-list-item-subtitle>
             <v-list-item v-for="item in jdata.sub_variants" :key="item.name">
               <!-- jdata.sub_fields is object -->
-              <v-list-item-content>
-                <DargsItem :jdata="item" ref="subvariant" />
-              </v-list-item-content>
+              <DargsItem :jdata="item" ref="subvariant" />
             </v-list-item>
           </v-list>
 
@@ -146,14 +140,14 @@
         {{ item.name }}
       </v-tab>
     </v-tabs>
-    <v-tabs-items v-model="tab">
+    <v-window v-model="tab">
       <!-- important: use eager prop to let this.$refs["subitem"][this.tab] not undefined -->
-      <v-tab-item v-for="item in jdata.choice_dict" :key="item.name" eager>
+      <v-window-item v-for="item in jdata.choice_dict" :key="item.name" eager>
         <v-card flat>
           <DargsItem :jdata="item" ref="subitem" />
         </v-card>
-      </v-tab-item>
-    </v-tabs-items>
+      </v-window-item>
+    </v-window>
   </div>
 </template>
 

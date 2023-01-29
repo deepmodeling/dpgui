@@ -2317,6 +2317,54 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@intlify/core-base@npm:9.2.2":
+  version: 9.2.2
+  resolution: "@intlify/core-base@npm:9.2.2"
+  dependencies:
+    "@intlify/devtools-if": 9.2.2
+    "@intlify/message-compiler": 9.2.2
+    "@intlify/shared": 9.2.2
+    "@intlify/vue-devtools": 9.2.2
+  checksum: 51f9c803d3d25e85561efef26ec1314d87c67e2ac15c4ac1fba946ea54a0b77b2357f1c158f94df5cfa90b200ab2ce78284421da7fdd360bc96d2231e8d342b9
+  languageName: node
+  linkType: hard
+
+"@intlify/devtools-if@npm:9.2.2":
+  version: 9.2.2
+  resolution: "@intlify/devtools-if@npm:9.2.2"
+  dependencies:
+    "@intlify/shared": 9.2.2
+  checksum: ac4217b1753c42845a4c91d64d706a154014e802647244b3d38ccea7fe7e7935f2b305a162cecdab6d5b7b028b1af0e7af1b61832b89a2c4fdabff27c375252c
+  languageName: node
+  linkType: hard
+
+"@intlify/message-compiler@npm:9.2.2":
+  version: 9.2.2
+  resolution: "@intlify/message-compiler@npm:9.2.2"
+  dependencies:
+    "@intlify/shared": 9.2.2
+    source-map: 0.6.1
+  checksum: 309384c0361e52f2c784759c85c3bf54b2f53ea50bf62a09684196c34ea6cfcb46da1a53e6de42b5802616c726f7ab8166ef2c284c9f7155d83c2ca6f5a224ef
+  languageName: node
+  linkType: hard
+
+"@intlify/shared@npm:9.2.2":
+  version: 9.2.2
+  resolution: "@intlify/shared@npm:9.2.2"
+  checksum: 3aad616c66c6ec479f78750e32a6f2d2f20fb7a32b4b634c2c81c58de52ca4f9c5ebfcb347411f5a719e08bd80cbcb86f13a66ad7a1a3faae45877d7ba789250
+  languageName: node
+  linkType: hard
+
+"@intlify/vue-devtools@npm:9.2.2":
+  version: 9.2.2
+  resolution: "@intlify/vue-devtools@npm:9.2.2"
+  dependencies:
+    "@intlify/core-base": 9.2.2
+    "@intlify/shared": 9.2.2
+  checksum: 12b7743337184bea915cb15e8a2e338ba02ca6d90127af21213b096fa1d83171b88f7650c05d45a1b13e13561daec841ae5ff497629450df47975c447a2b17ab
+  languageName: node
+  linkType: hard
+
 "@jridgewell/gen-mapping@npm:^0.1.0":
   version: 0.1.1
   resolution: "@jridgewell/gen-mapping@npm:0.1.1"
@@ -3243,19 +3291,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/compat@npm:^3.2.45":
-  version: 3.2.45
-  resolution: "@vue/compat@npm:3.2.45"
-  dependencies:
-    "@babel/parser": ^7.16.4
-    estree-walker: ^2.0.2
-    source-map: ^0.6.1
-  peerDependencies:
-    vue: 3.2.45
-  checksum: 9fd33c1575797150469dd0196f22e7c0316b096048e5ccca92b583d491619d19cdcc0d287833b066e4c8e9fdd9f348b524339f699b065b60b9bf3a85413bfcd6
-  languageName: node
-  linkType: hard
-
 "@vue/compiler-core@npm:3.2.45":
   version: 3.2.45
   resolution: "@vue/compiler-core@npm:3.2.45"
@@ -3346,7 +3381,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/devtools-api@npm:^6.4.5":
+"@vue/devtools-api@npm:^6.2.1, @vue/devtools-api@npm:^6.4.5":
   version: 6.5.0
   resolution: "@vue/devtools-api@npm:6.5.0"
   checksum: ec819ef3a426e91d09e9cfefd2827e9ed8ec9d62bb3b3e0674f3da8c7e92a4b879c3b777dc7329172ca6fe2670b62dd5580d23160339208f0f5ae038f2e504ad
@@ -4986,6 +5021,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"core-js@npm:^3.6.5":
+  version: 3.27.2
+  resolution: "core-js@npm:3.27.2"
+  checksum: 718debd426f55a6b97cf9b757c936be258afd6d4f7052f89d0f96c982d7013e9000b0b006df42831a0cf32adad298e34d6a19052dce9ae1c7ab87162c0c665e0
+  languageName: node
+  linkType: hard
+
 "core-util-is@npm:1.0.2, core-util-is@npm:~1.0.0":
   version: 1.0.2
   resolution: "core-util-is@npm:1.0.2"
@@ -5043,6 +5085,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cross-env@npm:^7.0.3":
+  version: 7.0.3
+  resolution: "cross-env@npm:7.0.3"
+  dependencies:
+    cross-spawn: ^7.0.1
+  bin:
+    cross-env: src/bin/cross-env.js
+    cross-env-shell: src/bin/cross-env-shell.js
+  checksum: 26f2f3ea2ab32617f57effb70d329c2070d2f5630adc800985d8b30b56e8bf7f5f439dd3a0358b79cee6f930afc23cf8e23515f17ccfb30092c6b62c6b630a79
+  languageName: node
+  linkType: hard
+
 "cross-spawn@npm:^5.0.1":
   version: 5.1.0
   resolution: "cross-spawn@npm:5.1.0"
@@ -5067,7 +5121,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cross-spawn@npm:^7.0.2, cross-spawn@npm:^7.0.3":
+"cross-spawn@npm:^7.0.1, cross-spawn@npm:^7.0.2, cross-spawn@npm:^7.0.3":
   version: 7.0.3
   resolution: "cross-spawn@npm:7.0.3"
   dependencies:
@@ -5578,7 +5632,6 @@ __metadata:
     "@vue/cli-plugin-pwa": ~5.0.8
     "@vue/cli-plugin-router": ~5.0.8
     "@vue/cli-service": ~5.0.8
-    "@vue/compat": ^3.2.45
     "@vue/compiler-sfc": ^3.2.45
     axios: ^1.2.1
     core-js: ^3.26.1
@@ -5593,9 +5646,9 @@ __metadata:
     unpkg_url: ^0.0.1
     vue: ^3.2.45
     vue-axios: ^3.5.2
-    vue-i18n: ^8.28.2
+    vue-i18n: ^9.2.2
     vue-router: ^4.1.6
-    vue2-storage: ^6.1.3
+    vue3-storage: ^0.1.11
     vuetify: ^3.0.0
     webpack-cdn-plugin: ^3.3.1
     webpack-plugin-vuetify: ^2.0.1
@@ -10719,17 +10772,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"source-map@npm:0.6.1, source-map@npm:^0.6.0, source-map@npm:^0.6.1, source-map@npm:~0.6.0, source-map@npm:~0.6.1":
+  version: 0.6.1
+  resolution: "source-map@npm:0.6.1"
+  checksum: 59ce8640cf3f3124f64ac289012c2b8bd377c238e316fb323ea22fbfe83da07d81e000071d7242cad7a23cd91c7de98e4df8830ec3f133cb6133a5f6e9f67bc2
+  languageName: node
+  linkType: hard
+
 "source-map@npm:^0.5.0":
   version: 0.5.7
   resolution: "source-map@npm:0.5.7"
   checksum: 5dc2043b93d2f194142c7f38f74a24670cd7a0063acdaf4bf01d2964b402257ae843c2a8fa822ad5b71013b5fcafa55af7421383da919752f22ff488bc553f4d
-  languageName: node
-  linkType: hard
-
-"source-map@npm:^0.6.0, source-map@npm:^0.6.1, source-map@npm:~0.6.0, source-map@npm:~0.6.1":
-  version: 0.6.1
-  resolution: "source-map@npm:0.6.1"
-  checksum: 59ce8640cf3f3124f64ac289012c2b8bd377c238e316fb323ea22fbfe83da07d81e000071d7242cad7a23cd91c7de98e4df8830ec3f133cb6133a5f6e9f67bc2
   languageName: node
   linkType: hard
 
@@ -11726,6 +11779,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"vue-class-component@npm:^8.0.0-0":
+  version: 8.0.0-rc.1
+  resolution: "vue-class-component@npm:8.0.0-rc.1"
+  peerDependencies:
+    vue: ^3.0.0
+  checksum: 2e011478d94915e3a794561bfaaf820143697dea8268e4f749486f348b2e28583aee88a68f540ce7771d00129362a3883687495ad80a3928090a0524bfef7a66
+  languageName: node
+  linkType: hard
+
 "vue-eslint-parser@npm:^8.0.1":
   version: 8.3.0
   resolution: "vue-eslint-parser@npm:8.3.0"
@@ -11750,10 +11812,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-i18n@npm:^8.28.2":
-  version: 8.28.2
-  resolution: "vue-i18n@npm:8.28.2"
-  checksum: e0721cc79b6539afa821edb9ce1028c7a661d7db9232888fe6beda7c4cd731c0f72875202046535ea7283715414625f456ea2da78676cb8097fdca7b6f4630c1
+"vue-i18n@npm:^9.2.2":
+  version: 9.2.2
+  resolution: "vue-i18n@npm:9.2.2"
+  dependencies:
+    "@intlify/core-base": 9.2.2
+    "@intlify/shared": 9.2.2
+    "@intlify/vue-devtools": 9.2.2
+    "@vue/devtools-api": ^6.2.1
+  peerDependencies:
+    vue: ^3.0.0
+  checksum: 513b82d701674816d01ce085cbf4e21813bcfb65636dbef0f8df4ce94add272d49df8eca122863349dff0eb7046ab0379852386602dd752b48d16b2b2178c735
   languageName: node
   linkType: hard
 
@@ -11775,7 +11844,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-router@npm:^4.1.6":
+"vue-router@npm:^4.0.0-0, vue-router@npm:^4.1.6":
   version: 4.1.6
   resolution: "vue-router@npm:4.1.6"
   dependencies:
@@ -11803,16 +11872,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue2-storage@npm:^6.1.3":
-  version: 6.1.3
-  resolution: "vue2-storage@npm:6.1.3"
+"vue3-storage@npm:^0.1.11":
+  version: 0.1.11
+  resolution: "vue3-storage@npm:0.1.11"
+  dependencies:
+    core-js: ^3.6.5
+    cross-env: ^7.0.3
+    vue: ^3.0.0
+    vue-class-component: ^8.0.0-0
+    vue-router: ^4.0.0-0
   peerDependencies:
-    vue: ^2
-  checksum: cf0adec9f48d6640fe0bb958e5f8c4df8048924d142eb52d277d70b4047f6f1e3874c8157c6fee36b48492e98300f47d6e767dcf3e11cb9865a41fb1f5c85bdc
+    core-js: ^3.6.5
+    vue: ^3.0.0
+  checksum: 425a42ae1fe1f2fba260dcc64c55691469e853c6d0c6089f6180a80b2e131153a74be3baa4180e36655b6478dcfeb6b6f230669d2d5ec15c3d8ba7db157f0703
   languageName: node
   linkType: hard
 
-"vue@npm:^3.2.45":
+"vue@npm:^3.0.0, vue@npm:^3.2.45":
   version: 3.2.45
   resolution: "vue@npm:3.2.45"
   dependencies:

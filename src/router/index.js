@@ -1,8 +1,5 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView'
-
-Vue.use(VueRouter)
 
 const routes = [
   {
@@ -25,11 +22,11 @@ const routes = [
     name: 'New',
     component: () => import(/* webpackChunkName: "input" */ '../views/NewConfig.vue')
   },
-  { path: '*', component: HomeView },
+  { path: '/:pathMatch(.*)*', name: "404", component: HomeView },
 ]
 
-const router = new VueRouter({
-  mode: 'history',
+const router = createRouter({
+  history: createWebHistory(),
   base: '/dpgui/',
   routes
 })
