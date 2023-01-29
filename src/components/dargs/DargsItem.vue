@@ -73,9 +73,8 @@
         <v-switch
           v-else-if="select_type == 'bool'"
           v-model="value"
-          :hint="jdata.doc"
+          :messages="jdata.doc"
           :disabled="!check"
-          persistent-hint
         >
           <template v-slot:label>
             <div>
