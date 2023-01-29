@@ -17,12 +17,12 @@
             <v-list-group v-for="(subtool, jj) in tool.sub" :key="jj" :value="'subtool_' + jj" no-action sub-group>
               <template v-slot:activator="{ props }">
                 <v-list-item v-bind="props">
-                  <v-list-item-subtitle>{{ subtool.name }}</v-list-item-subtitle>
+                  <v-list-item-title>{{ subtool.name }}</v-list-item-title>
                 </v-list-item>
               </template>
               <!-- 3rd -->
               <v-list-item v-for="(subsubtool, kk) in subtool.sub" :key="kk" :to="subsubtool.to" :append-icon="subsubtool.icon" class="mx-n4">
-                {{ subsubtool.name }}
+                <v-list-item-title>{{ subsubtool.name }}</v-list-item-title>
               </v-list-item>
             </v-list-group>
           </v-list-group>
