@@ -1,6 +1,3 @@
-const WebpackCdnPlugin = require('webpack-cdn-plugin');
-const { npm_url } = require('unpkg_url');
-
 module.exports = {
   transpileDependencies: [
     'vuetify'

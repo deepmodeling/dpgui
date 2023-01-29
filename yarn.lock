@@ -5588,7 +5588,6 @@ __metadata:
     sass: ~1.55.0
     sass-loader: ^10.0.0
     stream-browserify: ^3.0.0
-    unpkg_url: ^0.0.1
     vue: ^3.2.45
     vue-axios: ^3.5.2
     vue-i18n: ^9.2.2
@@ -11330,13 +11329,6 @@ __metadata:
   version: 1.0.0
   resolution: "unpipe@npm:1.0.0"
   checksum: 4fa18d8d8d977c55cb09715385c203197105e10a6d220087ec819f50cb68870f02942244f1017565484237f1f8c5d3cd413631b1ae104d3096f24fdfde1b4aa2
-  languageName: node
-  linkType: hard
-
-"unpkg_url@npm:^0.0.1":
-  version: 0.0.1
-  resolution: "unpkg_url@npm:0.0.1"
-  checksum: 437e5a4ac03d062e3cfa1b7ede61636f40dd7a0f2d012cc33c4de0cf5e019f8e1bbcaf24fa92b5a6540bdd4a627aa5b63f805df74cb6b88f6cfcb7483b91eae1
   languageName: node
   linkType: hard
 
