@@ -18,3 +18,7 @@ repos:
     rev: v8.32.0
     hooks:
     -   id: eslint
+        types: [file]
+        types_or: [javascript, vue]
+        additional_dependencies:
+        -   eslint-plugin-vue@v9.9.0
