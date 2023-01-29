@@ -22,6 +22,17 @@ const vuetify = createVuetify({
       fa,
     },
   },
+  theme: {
+    defaultTheme: 'myCustomTheme',
+    themes: {
+      myCustomTheme: {
+        dark: false,
+        colors: {
+          primary: '#1f2676',
+        }
+      }
+    }
+  }
 })
 
 export default vuetify;

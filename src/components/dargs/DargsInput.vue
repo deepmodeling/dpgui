@@ -11,7 +11,7 @@
         <v-select
           v-model="example_select"
           :items="examples"
-          item-text="name"
+          item-title="name"
           item-value="url"
           :placeholder="$t('message.select_example')"
           :hint="$t('message.select_example')"
