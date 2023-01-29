@@ -4,7 +4,7 @@
       v-model="file"
       :label="$t('message.load_json')"
       accept=".json"
-      @change="from_json_file(file)"
+      @change="from_json_file(file[0])"
     />
     <v-row v-if="examples">
       <v-col>

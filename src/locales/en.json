@@ -21,6 +21,8 @@
         "home": "Home",
         "software_input": "Software Input",
         "setting": "Setting | Settings",
-        "management": "Management"
+        "management": "Management",
+        "add_repeat": "Add Item",
+        "remove_repeat": "Remove Item {index}"
     }
 }
