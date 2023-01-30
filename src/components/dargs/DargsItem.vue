@@ -1,30 +1,45 @@
 <template>
   <!-- list -->
-  <div class="w-100" v-if="Array.isArray(jdata)">
+  <div
+    v-if="Array.isArray(jdata)"
+    class="w-100"
+  >
     <v-list>
-      <v-list-item v-for="item in jdata" :key="item.name">
-        <DargsItem :jdata="item" ref="subitem" />
+      <v-list-item
+        v-for="item in jdata"
+        :key="item.name"
+      >
+        <DargsItem
+          ref="subitem"
+          :jdata="item"
+        />
       </v-list-item>
     </v-list>
   </div>
-  <div class="w-100 mx-1" v-else-if="jdata.object == 'Argument'">
+  <div
+    v-else-if="jdata.object == 'Argument'"
+    class="w-100 mx-1"
+  >
     <v-row class="w-100">
       <v-col cols="auto">
-        <v-checkbox v-model="check" v-if="jdata.optional"></v-checkbox> </v-col
-      ><v-col>
+        <v-checkbox
+          v-if="jdata.optional"
+          v-model="check"
+        />
+      </v-col><v-col>
         <v-row v-if="jdata.type.length > 1">
           <v-col cols="auto">
-            <v-list-subheader
-              >{{ $t('message.typeof', { name: jdata.name }) }}
-              <small v-if="jdata.optional">{{ $t('message.optional') }}</small></v-list-subheader
-            >
+            <v-list-subheader>
+              {{ $t('message.typeof', { name: jdata.name }) }}
+              <small v-if="jdata.optional">{{ $t('message.optional') }}</small>
+            </v-list-subheader>
           </v-col>
           <v-col>
             <v-select
-              :items="jdata.type"
               v-model="select_type"
+              :items="jdata.type"
               :hint="$t('message.select_type', {name: jdata.name})"
-            ></v-select>
+            />
           </v-col>
         </v-row>
         <!-- text areas for list -->
@@ -37,35 +52,41 @@
           clearable
           @input="up"
         >
-          <template v-slot:label>
+          <template #label>
             <div>
               {{ jdata.name }} <small v-if="jdata.optional">{{ $t('message.optional') }}</small>
             </div>
           </template>
-          <template v-slot:message="{ message, key }">
-            <div v-html="message.replaceAll('\n', '<br/>')" :key="key"></div>
+          <template #message="{ message, key }">
+            <div
+              :key="key"
+              v-html="message.replaceAll('\n', '<br/>')"
+            />
           </template>
         </v-textarea>
         <!-- text field for str, int, float -->
         <v-text-field
-          :hint="jdata.doc"
+          v-else-if="['str', 'int', 'float'].includes(select_type)"
           v-model="value"
+          :hint="jdata.doc"
           :placeholder="select_type"
           :rules="[
             ...(!jdata.optional ? rules.required : []),
             ...(['int', 'float'].includes(select_type) ? rules.number : []),
           ]"
-          v-else-if="['str', 'int', 'float'].includes(select_type)"
           clearable
           @input="up"
         >
-          <template v-slot:label>
+          <template #label>
             <div>
               {{ jdata.name }} <small v-if="jdata.optional">{{ $t('message.optional') }}</small>
             </div>
           </template>
-          <template v-slot:message="{ message, key }">
-            <div v-html="message.replaceAll('\n', '<br/>')" :key="key"></div>
+          <template #message="{ message, key }">
+            <div
+              :key="key"
+              v-html="message.replaceAll('\n', '<br/>')"
+            />
           </template>
         </v-text-field>
 
@@ -76,36 +97,52 @@
           :messages="jdata.doc"
           :disabled="!check"
         >
-          <template v-slot:label>
+          <template #label>
             <div>
               {{ jdata.name }} <small v-if="jdata.optional">{{ $t('message.optional') }}</small>
             </div>
           </template>
-          <template v-slot:message="{ message, key }">
+          <template #message="{ message, key }">
             <div
-              v-html="message.replaceAll('\n', '<br/>')"
               :key="key"
-            ></div> </template
-        ></v-switch>
+              v-html="message.replaceAll('\n', '<br/>')"
+            />
+          </template>
+        </v-switch>
 
         <div v-else-if="select_type == 'dict'">
           <!-- dict sub_fields -->
           <v-list v-if="Object.keys(jdata.sub_fields).length">
             <v-list-item-title> {{ jdata.name }}</v-list-item-title>
             <v-list-item-subtitle> {{ jdata.doc }}</v-list-item-subtitle>
-            <v-list-item v-for="item in jdata.sub_fields" :key="item.name">
+            <v-list-item
+              v-for="item in jdata.sub_fields"
+              :key="item.name"
+            >
               <!-- jdata.sub_fields is object -->
-              <DargsItem :jdata="item" ref="subitem" />
+              <DargsItem
+                ref="subitem"
+                :jdata="item"
+              />
             </v-list-item>
           </v-list>
 
           <!-- dict variant -->
-          <v-list v-if="Object.keys(jdata.sub_variants).length" subheader>
+          <v-list
+            v-if="Object.keys(jdata.sub_variants).length"
+            subheader
+          >
             <v-list-item-title> {{ jdata.name }}</v-list-item-title>
             <v-list-item-subtitle> {{ jdata.doc }}</v-list-item-subtitle>
-            <v-list-item v-for="item in jdata.sub_variants" :key="item.name">
+            <v-list-item
+              v-for="item in jdata.sub_variants"
+              :key="item.name"
+            >
               <!-- jdata.sub_fields is object -->
-              <DargsItem :jdata="item" ref="subvariant" />
+              <DargsItem
+                ref="subvariant"
+                :jdata="item"
+              />
             </v-list-item>
           </v-list>
 
@@ -120,30 +157,49 @@
             clearable
             @input="up"
           >
-            <template v-slot:label>
+            <template #label>
               <div>
                 {{ jdata.name }} <small v-if="jdata.optional">{{ $t('message.optional') }}</small>
               </div>
             </template>
-            <template v-slot:message="{ message, key }">
-              <div v-html="message.replaceAll('\n', '<br/>')" :key="key"></div>
+            <template #message="{ message, key }">
+              <div
+                :key="key"
+                v-html="message.replaceAll('\n', '<br/>')"
+              />
             </template>
           </v-textarea>
         </div>
       </v-col>
     </v-row>
   </div>
-  <div class="w-100" v-else-if="jdata.object == 'Variant'">
-    <v-tabs v-model="tab" show-arrows>
-      <v-tab v-for="item in jdata.choice_dict" :key="item.name">
+  <div
+    v-else-if="jdata.object == 'Variant'"
+    class="w-100"
+  >
+    <v-tabs
+      v-model="tab"
+      show-arrows
+    >
+      <v-tab
+        v-for="item in jdata.choice_dict"
+        :key="item.name"
+      >
         {{ item.name }}
       </v-tab>
     </v-tabs>
     <v-window v-model="tab">
       <!-- important: use eager prop to let this.$refs["subitem"][this.tab] not undefined -->
-      <v-window-item v-for="item in jdata.choice_dict" :key="item.name" eager>
+      <v-window-item
+        v-for="item in jdata.choice_dict"
+        :key="item.name"
+        eager
+      >
         <v-card flat>
-          <DargsItem :jdata="item" ref="subitem" />
+          <DargsItem
+            ref="subitem"
+            :jdata="item"
+          />
         </v-card>
       </v-window-item>
     </v-window>
@@ -234,7 +290,7 @@ export default {
                 ...this.$refs["subvariant"].map((vv) => vv.dvalue())
               )
             : Object();
-          const any_arguments = (!Object.keys(this.jdata.sub_fields).length && !Object.keys(this.jdata.sub_variants).length) 
+          const any_arguments = (!Object.keys(this.jdata.sub_fields).length && !Object.keys(this.jdata.sub_variants).length)
             ? JSON.parse(this.value)
             : Object();
           return {

@@ -1,11 +1,26 @@
 <template>
   <div>
-    <DargsInput v-if="jdata" :jdata="jdata" :examples="examples" />
-    <div v-else-if="loading" class="text-center">
-      <v-progress-circular indeterminate color="primary"></v-progress-circular>
+    <DargsInput
+      v-if="jdata"
+      :jdata="jdata"
+      :examples="examples"
+    />
+    <div
+      v-else-if="loading"
+      class="text-center"
+    >
+      <v-progress-circular
+        indeterminate
+        color="primary"
+      />
       {{ $t('message.loading') }}
     </div>
-    <div v-else class="text-center">{{ $t('message.invalid_id') }}</div>
+    <div
+      v-else
+      class="text-center"
+    >
+      {{ $t('message.invalid_id') }}
+    </div>
   </div>
 </template>
 
@@ -14,11 +29,15 @@ import DargsInput from "../components/dargs/DargsInput.vue";
 import args from "@deepmodeling/args";
 export default {
   name: "InputView",
-  data() {
-    return this.load(this.$route.params.id);
-  },
   components: {
     DargsInput,
+  },
+  beforeRouteUpdate(to, from, next) {
+    Object.assign(this, this.load(to.params.id));
+    next();
+  },
+  data() {
+    return this.load(this.$route.params.id);
   },
   methods: {
     load: function (id) {
@@ -56,10 +75,6 @@ export default {
       }
       return prop;
     },
-  },
-  beforeRouteUpdate(to, from, next) {
-    Object.assign(this, this.load(to.params.id));
-    next();
   },
 };
 </script>

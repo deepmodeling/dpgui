@@ -1,16 +1,27 @@
 <template>
   <div>
-    <v-data-table :headers="headers" :items="items" :items-per-page="10">
-      <template v-slot:item.template="{ item }">
+    <v-data-table
+      :headers="headers"
+      :items="items"
+      :items-per-page="10"
+    >
+      <template #item.template="{ item }">
         <v-btn :to="item.props.title.to">
           {{ $tc('message.template') }}
         </v-btn>
       </template>
-      <template v-slot:item.delete="{ item }">
-        <v-btn v-if="item.props.title.delete" @click="delete_item(item.props.title.id)"> Delete </v-btn>
+      <template #item.delete="{ item }">
+        <v-btn
+          v-if="item.props.title.delete"
+          @click="delete_item(item.props.title.id)"
+        >
+          Delete
+        </v-btn>
       </template>
     </v-data-table>
-    <v-btn to="/new"> {{ $t('message.add_new_template') }}</v-btn>
+    <v-btn to="/new">
+      {{ $t('message.add_new_template') }}
+    </v-btn>
   </div>
 </template>
 
