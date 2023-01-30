@@ -1,14 +1,11 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home'
-
-Vue.use(VueRouter)
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: HomeView
   },
   {
     path: '/input',
@@ -18,18 +15,18 @@ const routes = [
   {
     path: '/input/:id',
     name: 'User Input',
-    component: () => import(/* webpackChunkName: "input" */ '../views/Input.vue')
+    component: () => import(/* webpackChunkName: "input" */ '../views/InputView.vue')
   },
   {
     path: '/new',
     name: 'New',
     component: () => import(/* webpackChunkName: "input" */ '../views/NewConfig.vue')
   },
-  { path: '*', component: Home },
+  { path: '/:pathMatch(.*)*', name: "404", component: HomeView },
 ]
 
-const router = new VueRouter({
-  mode: 'history',
+const router = createRouter({
+  history: createWebHistory(),
   base: '/dpgui/',
   routes
 })

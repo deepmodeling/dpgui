@@ -1,48 +1,28 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" fixed app>
+    <v-navigation-drawer v-model="drawer" fixed app :width="512">
       <v-list dense>
         <div v-for="(tool, ii) in tools" :key="ii">
           <!-- 1st -->
-          <v-list-item v-if="!tool.sub" :to="tool.to">
-            <v-list-item-icon v-if="tool.icon">
-              <v-icon>{{ tool.icon }}</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>{{ tool.name }}</v-list-item-title>
-            </v-list-item-content>
+          <v-list-item v-if="!tool.sub" :to="tool.to" :prepend-icon="tool.icon">
+            <v-list-item-title>{{ tool.name }}</v-list-item-title>
           </v-list-item>
-          <v-list-group v-else :value="true" no-action>
-            <template v-slot:activator>
-              <v-list-item-icon>
-                <v-icon>{{ tool.icon }}</v-icon>
-              </v-list-item-icon>
-              <v-list-item-title>{{ tool.name }}</v-list-item-title>
+          <v-list-group v-else :value="'tool_' + ii" no-action>
+            <template v-slot:activator="{ props }">
+              <v-list-item :prepend-icon="tool.icon" v-bind="props">
+                <v-list-item-title>{{ tool.name }}</v-list-item-title>
+              </v-list-item>
             </template>
             <!-- 2st -->
-            <v-list-group
-              v-for="(subtool, jj) in tool.sub"
-              :key="jj"
-              :value="true"
-              no-action
-              sub-group
-            >
-              <template v-slot:activator>
-                <v-list-item-title>{{ subtool.name }}</v-list-item-title>
+            <v-list-group v-for="(subtool, jj) in tool.sub" :key="jj" :value="'subtool_' + jj" no-action sub-group>
+              <template v-slot:activator="{ props }">
+                <v-list-item v-bind="props">
+                  <v-list-item-title>{{ subtool.name }}</v-list-item-title>
+                </v-list-item>
               </template>
               <!-- 3rd -->
-              <v-list-item
-                v-for="(subsubtool, kk) in subtool.sub"
-                :key="kk"
-                :to="subsubtool.to"
-                class="subsubitem"
-              >
-                <v-list-item-content>
-                  <v-list-item-title>{{ subsubtool.name }}</v-list-item-title>
-                </v-list-item-content>
-                <v-list-item-icon v-if="subsubtool.icon">
-                  <v-icon>{{ subsubtool.icon }}</v-icon>
-                </v-list-item-icon>
+              <v-list-item v-for="(subsubtool, kk) in subtool.sub" :key="kk" :to="subsubtool.to" :append-icon="subsubtool.icon" class="mx-n4">
+                <v-list-item-title>{{ subsubtool.name }}</v-list-item-title>
               </v-list-item>
             </v-list-group>
           </v-list-group>
@@ -120,7 +100,7 @@ export default {
           name: vv.name,
           to: `/input/${kk}`,
         })),
-        ...Object.entries(this.$storage.get("CustomTemplate", {})).map(
+        ...Object.entries(this.$storage.getStorageSync("CustomTemplate") || {}).map(
           ([kk, vv]) => ({
             name: vv.name,
             to: `/input/${kk}`,
@@ -134,9 +114,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.subsubitem {
-  padding-left: 25px!important;
-}
-</style>

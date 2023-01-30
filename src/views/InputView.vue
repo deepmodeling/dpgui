@@ -1,6 +1,6 @@
 <template>
   <div>
-    <dargs v-if="jdata" :jdata="jdata" :examples="examples" />
+    <DargsInput v-if="jdata" :jdata="jdata" :examples="examples" />
     <div v-else-if="loading" class="text-center">
       <v-progress-circular indeterminate color="primary"></v-progress-circular>
       {{ $t('message.loading') }}
@@ -10,15 +10,15 @@
 </template>
 
 <script>
-import dargs from "../components/dargs/dargs.vue";
+import DargsInput from "../components/dargs/DargsInput.vue";
 import args from "@deepmodeling/args";
 export default {
-  name: "Input",
+  name: "InputView",
   data() {
     return this.load(this.$route.params.id);
   },
   components: {
-    dargs,
+    DargsInput,
   },
   methods: {
     load: function (id) {
@@ -48,7 +48,7 @@ export default {
           Object.assign(prop, { loading: true });
         } else {
           // custom?
-          const bb = this.$storage.get("CustomTemplate", {})[id];
+          const bb = this.$storage.getStorageSync("CustomTemplate", {})[id];
           if (bb) {
             Object.assign(prop, { jdata: bb.obj });
           }

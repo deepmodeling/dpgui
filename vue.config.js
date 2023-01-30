@@ -7,6 +7,12 @@ module.exports = {
   ],
   publicPath: process.env.BASE_URL ? process.env.BASE_URL : '/dpgui/',
   configureWebpack: {
+    resolve: {
+      fallback: {
+        "crypto": require.resolve("crypto-browserify"),
+        "stream": require.resolve("stream-browserify"),
+      },
+    },
     plugins: [
       ...(
         process.env.VUE_APP_CDN
@@ -16,7 +22,7 @@ module.exports = {
                 { name: 'vue', var: 'Vue', path: 'dist/vue.runtime.min.js' },
                 { name: 'vue-router', var: 'VueRouter', path: 'dist/vue-router.min.js' },
                 { name: '@fortawesome/fontawesome-free', style: 'css/all.min.css', cssOnly: true },
-                { name: 'vue2-storage', var: 'Vue2StoragePlugin', path: 'dist/vue2-storage.min.js' },
+                { name: 'vue3-storage', var: 'Vue3StoragePlugin', path: 'dist/vue3-storage.min.js' },
                 { name: 'axios', path: 'dist/axios.min.js' },
                 { name: 'vue-i18n', var: 'VueI18n', path: 'dist/vue-i18n.min.js' },
               ],
