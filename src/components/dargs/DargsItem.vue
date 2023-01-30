@@ -234,7 +234,7 @@ export default {
                 ...this.$refs["subvariant"].map((vv) => vv.dvalue())
               )
             : Object();
-          const any_arguments = (!Object.keys(this.jdata.sub_fields).length && !Object.keys(this.jdata.sub_variants).length) 
+          const any_arguments = (!Object.keys(this.jdata.sub_fields).length && !Object.keys(this.jdata.sub_variants).length)
             ? JSON.parse(this.value)
             : Object();
           return {

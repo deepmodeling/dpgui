@@ -24,4 +24,3 @@ Build the app:
 ```sh
 yarn build
 ```
-
