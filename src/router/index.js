@@ -26,8 +26,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
-  base: '/dpgui/',
+  history: createWebHistory(process.env.BASE_URL ? process.env.BASE_URL : '/dpgui/'),
   routes
 })
 
