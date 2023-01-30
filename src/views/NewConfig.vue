@@ -46,7 +46,7 @@ export default {
         that.$router.push("/input");
         that.$root.$app.update_navi();
       };
-      reader.readAsText(this.file);
+      reader.readAsText(this.file[0]);
     },
   },
 };

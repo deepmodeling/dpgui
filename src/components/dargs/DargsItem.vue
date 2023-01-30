@@ -42,9 +42,65 @@
             />
           </v-col>
         </v-row>
+        <!-- list of arguments, repeat=True -->
+        <v-row
+          v-if="select_type == 'list' && jdata.repeat"
+          class="w-100"
+        >
+          <v-col cols="auto">
+            <v-list>
+              <v-card variant="outlined">
+                <v-list-item-title class="font-weight-black">
+                  {{ jdata.name }}
+                </v-list-item-title>
+                <p class="text--secondary">
+                  {{ jdata.doc }}
+                </p>
+                <v-list-item
+                  v-for="(rr_jdata, index) in repeat_jdata"
+                  :key="index"
+                >
+                  <v-card variant="outlined">
+                    <v-list-item-title class="font-weight-bold">
+                      {{ jdata.name }} - Item {{ index }}
+                    </v-list-item-title>
+                    <v-btn
+                      block
+                      prepend-icon="fa-solid fa-trash"
+                      color="error"
+                      @click="remove_repeat(index)"
+                    >
+                      {{ $t('message.remove_repeat', { index }) }}
+                    </v-btn>
+                    <v-list>
+                      <v-list-item
+                        v-for="item in rr_jdata.sub_fields"
+                        :key="item.name"
+                      >
+                        <!-- jdata.sub_fields is object -->
+                        <DargsItem
+                          :ref="'subitem_' + index"
+                          :jdata="item"
+                        />
+                      </v-list-item>
+                    </v-list>
+                  </v-card>
+                </v-list-item>
+                <v-btn
+                  block
+                  prepend-icon="fa-solid fa-plus"
+                  @click="add_repeat()"
+                >
+                  {{ $t('message.add_repeat') }}
+                </v-btn>
+              </v-card>
+            </v-list>
+          </v-col>
+        </v-row>
+
         <!-- text areas for list -->
         <v-textarea
-          v-if="select_type == 'list'"
+          v-else-if="select_type == 'list'"
           v-model="value"
           :hint="$t('message.one_element_per_row') + '\n' + jdata.doc"
           :placeholder="select_type"
@@ -112,28 +168,41 @@
 
         <div v-else-if="select_type == 'dict'">
           <!-- dict sub_fields -->
-          <v-list v-if="Object.keys(jdata.sub_fields).length">
-            <v-list-item-title> {{ jdata.name }}</v-list-item-title>
-            <v-list-item-subtitle> {{ jdata.doc }}</v-list-item-subtitle>
-            <v-list-item
-              v-for="item in jdata.sub_fields"
-              :key="item.name"
-            >
-              <!-- jdata.sub_fields is object -->
-              <DargsItem
-                ref="subitem"
-                :jdata="item"
-              />
-            </v-list-item>
-          </v-list>
+          <v-card
+            v-if="Object.keys(jdata.sub_fields).length"
+            variant="outlined"
+          >
+            <v-list>
+              <v-list-item-title class="font-weight-black">
+                {{ jdata.name }}
+              </v-list-item-title>
+              <p class="text--secondary">
+                {{ jdata.doc }}
+              </p>
+              <v-list-item
+                v-for="item in jdata.sub_fields"
+                :key="item.name"
+              >
+                <!-- jdata.sub_fields is object -->
+                <DargsItem
+                  ref="subitem"
+                  :jdata="item"
+                />
+              </v-list-item>
+            </v-list>
+          </v-card>
 
           <!-- dict variant -->
           <v-list
             v-if="Object.keys(jdata.sub_variants).length"
             subheader
           >
-            <v-list-item-title> {{ jdata.name }}</v-list-item-title>
-            <v-list-item-subtitle> {{ jdata.doc }}</v-list-item-subtitle>
+            <v-list-item-title class="font-weight-black">
+              {{ jdata.name }}
+            </v-list-item-title>
+            <p class="text--secondary">
+              {{ jdata.doc }}
+            </p>
             <v-list-item
               v-for="item in jdata.sub_variants"
               :key="item.name"
@@ -173,9 +242,10 @@
       </v-col>
     </v-row>
   </div>
-  <div
+  <v-card
     v-else-if="jdata.object == 'Variant'"
     class="w-100"
+    variant="outlined"
   >
     <v-tabs
       v-model="tab"
@@ -203,7 +273,7 @@
         </v-card>
       </v-window-item>
     </v-window>
-  </div>
+  </v-card>
 </template>
 
 <script>
@@ -214,6 +284,7 @@ export default {
   },
   data() {
     var tab = 0;
+    const repeat_jdata = [];
     if (this.jdata.object == "Variant") {
       if (this.jdata.default_tag) {
         tab = Object.keys(this.jdata.choice_dict).indexOf(
@@ -221,6 +292,9 @@ export default {
         );
       }
       if (tab < 0) tab = 0;
+    } else if (this.jdata.object == "Argument" && this.jdata.repeat) {
+      // init with one element
+      repeat_jdata.push(this.jdata);
     }
     return {
       tab: tab,
@@ -231,6 +305,7 @@ export default {
         number: [(value) => !value || !isNaN(value) || "Number required."],
       },
       select_type: this.jdata.type && this.jdata.type[0],
+      repeat_jdata,
     };
   },
   methods: {
@@ -249,6 +324,19 @@ export default {
         );
       } else if (this.jdata.object == "Argument") {
         if (this.select_type == "list") {
+          if (this.jdata.repeat) {
+            return [...Array(this.repeat_jdata.length).keys()].map((ii) => {
+              return Object.keys(this.jdata.sub_fields).length
+                ? Object.fromEntries(
+                    new Map(
+                      this.$refs[`subitem_${ii}`]
+                        .filter((vv) => !vv.jdata.optional || vv.check)
+                        .map((vv) => [vv.jdata.name, vv.dvalue()])
+                    )
+                  )
+                : Object();
+            });
+          } else {
           // textarea -> list
           if (!this.value) return [];
           return this.value
@@ -261,6 +349,7 @@ export default {
                 return v;
               }
             });
+          }
         } else if (["str", "int", "float"].includes(this.select_type)) {
           if (!this.value) {
             if (this.select_type == "str") return "";
@@ -347,9 +436,33 @@ export default {
         load_subitem();
       } else if (this.jdata.object == "Argument") {
         if (this.jdata.type.includes("list") && Array.isArray(obj)) {
+          if(this.jdata.repeat){
+            this.repeat_jdata = [];
+            [...Array(obj.length).keys()].forEach((ii) => {
+              this.repeat_jdata.push(this.jdata);
+            });
+            [...Array(obj.length).keys()].forEach((ii) => {
+              var subobj = obj[ii];
+              if (this.$refs[`subitem_${ii}`])
+                this.$refs[`subitem_${ii}`].forEach((vv) => {
+                  // check if it exists, name and alias
+                  if (vv.jdata.name in subobj) {
+                    // exists
+                    vv.load(subobj[vv.jdata.name]);
+                  }
+                  vv.jdata.alias.forEach((aa) => {
+                    if (aa in subobj) vv.load(subobj[aa]);
+                  });
+                  if (vv.jdata.optional) {
+                    vv.check = vv.jdata.name in subobj;
+                  }
+                });
+            });
+          }else{
           // list -> multiple line str
           this.select_type = "list";
           this.value = obj.map(JSON.stringify).join("\n");
+          }
         } else if (this.jdata.type.includes("str") && typeof obj == "string") {
           this.select_type = "str";
           this.value = obj;
@@ -406,6 +519,12 @@ export default {
         this.tab = tab;
         this.$refs["subitem"][this.tab].load(obj);
       }
+    },
+    add_repeat: function() {
+      this.repeat_jdata.push(this.jdata);
+    },
+    remove_repeat: function(index) {
+      this.repeat_jdata.splice(index, 1);
     },
   },
 };
