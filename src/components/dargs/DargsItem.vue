@@ -43,47 +43,59 @@
           </v-col>
         </v-row>
         <!-- list of arguments, repeat=True -->
-        <v-row v-if="select_type == 'list' && jdata.repeat" class="w-100">
+        <v-row
+          v-if="select_type == 'list' && jdata.repeat"
+          class="w-100"
+        >
           <v-col cols="auto">
-          <v-list>
-            <v-card variant="outlined">
-            <v-list-item-title class="font-weight-black"> {{ jdata.name }}</v-list-item-title>
-            <p class="text--secondary"> {{ jdata.doc }}</p>
-            <v-list-item v-for="(rr_jdata, index) in repeat_jdata" :key="index">
+            <v-list>
               <v-card variant="outlined">
-              <v-list-item-title class="font-weight-bold"> {{ jdata.name }} - Item {{ index }}</v-list-item-title>
-              <v-btn
-              block
-              @click="remove_repeat(index)"
-              prepend-icon="fa-solid fa-trash"
-              color="error"
-            >
-              {{ $t('message.remove_repeat', { index }) }}
-            </v-btn>
-              <v-list>
+                <v-list-item-title class="font-weight-black">
+                  {{ jdata.name }}
+                </v-list-item-title>
+                <p class="text--secondary">
+                  {{ jdata.doc }}
+                </p>
                 <v-list-item
-                  v-for="item in rr_jdata.sub_fields"
-                  :key="item.name"
+                  v-for="(rr_jdata, index) in repeat_jdata"
+                  :key="index"
                 >
-                  <!-- jdata.sub_fields is object -->
-                  <DargsItem
-                    :ref="'subitem_' + index"
-                    :jdata="item"
-                  />
+                  <v-card variant="outlined">
+                    <v-list-item-title class="font-weight-bold">
+                      {{ jdata.name }} - Item {{ index }}
+                    </v-list-item-title>
+                    <v-btn
+                      block
+                      prepend-icon="fa-solid fa-trash"
+                      color="error"
+                      @click="remove_repeat(index)"
+                    >
+                      {{ $t('message.remove_repeat', { index }) }}
+                    </v-btn>
+                    <v-list>
+                      <v-list-item
+                        v-for="item in rr_jdata.sub_fields"
+                        :key="item.name"
+                      >
+                        <!-- jdata.sub_fields is object -->
+                        <DargsItem
+                          :ref="'subitem_' + index"
+                          :jdata="item"
+                        />
+                      </v-list-item>
+                    </v-list>
+                  </v-card>
                 </v-list-item>
-              </v-list>
-            </v-card>
-            </v-list-item>
-            <v-btn
-              block
-              @click="add_repeat()"
-              prepend-icon="fa-solid fa-plus"
-            >
-              {{ $t('message.add_repeat') }}
-            </v-btn>
-        </v-card>
-          </v-list>
-        </v-col>
+                <v-btn
+                  block
+                  prepend-icon="fa-solid fa-plus"
+                  @click="add_repeat()"
+                >
+                  {{ $t('message.add_repeat') }}
+                </v-btn>
+              </v-card>
+            </v-list>
+          </v-col>
         </v-row>
 
         <!-- text areas for list -->
@@ -156,30 +168,41 @@
 
         <div v-else-if="select_type == 'dict'">
           <!-- dict sub_fields -->
-          <v-card variant="outlined" v-if="Object.keys(jdata.sub_fields).length">
-          <v-list>
-            <v-list-item-title class="font-weight-black"> {{ jdata.name }}</v-list-item-title>
-            <p class="text--secondary"> {{ jdata.doc }}</p>
-            <v-list-item
-              v-for="item in jdata.sub_fields"
-              :key="item.name"
-            >
-              <!-- jdata.sub_fields is object -->
-              <DargsItem
-                ref="subitem"
-                :jdata="item"
-              />
-            </v-list-item>
-          </v-list>
-        </v-card>
+          <v-card
+            v-if="Object.keys(jdata.sub_fields).length"
+            variant="outlined"
+          >
+            <v-list>
+              <v-list-item-title class="font-weight-black">
+                {{ jdata.name }}
+              </v-list-item-title>
+              <p class="text--secondary">
+                {{ jdata.doc }}
+              </p>
+              <v-list-item
+                v-for="item in jdata.sub_fields"
+                :key="item.name"
+              >
+                <!-- jdata.sub_fields is object -->
+                <DargsItem
+                  ref="subitem"
+                  :jdata="item"
+                />
+              </v-list-item>
+            </v-list>
+          </v-card>
 
           <!-- dict variant -->
           <v-list
             v-if="Object.keys(jdata.sub_variants).length"
             subheader
           >
-            <v-list-item-title class="font-weight-black"> {{ jdata.name }}</v-list-item-title>
-            <p class="text--secondary"> {{ jdata.doc }}</p>
+            <v-list-item-title class="font-weight-black">
+              {{ jdata.name }}
+            </v-list-item-title>
+            <p class="text--secondary">
+              {{ jdata.doc }}
+            </p>
             <v-list-item
               v-for="item in jdata.sub_variants"
               :key="item.name"
