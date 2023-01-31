@@ -15,7 +15,7 @@ repos:
     -   id: check-toml
 # JS
 -   repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v8.32.0
+    rev: v8.33.0
     hooks:
     -   id: eslint
         files: \.([jt]sx?|vue)$
