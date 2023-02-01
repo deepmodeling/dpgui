@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container>
     <v-data-table
       :headers="headers"
       :items="items"
@@ -22,7 +22,7 @@
     <v-btn to="/new">
       {{ $t('message.add_new_template') }}
     </v-btn>
-  </div>
+  </v-container>
 </template>
 
 <script>
