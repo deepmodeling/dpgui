@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container>
     <DargsInput
       v-if="jdata"
       :jdata="jdata"
@@ -21,7 +21,7 @@
     >
       {{ $t('message.invalid_id') }}
     </div>
-  </div>
+  </v-container>
 </template>
 
 <script>

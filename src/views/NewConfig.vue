@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container>
     <v-file-input
       v-model="file"
       :label="$t('message.template_file')"
@@ -14,7 +14,7 @@
     <v-btn @click="add">
       <v-icon>fas fa-plus</v-icon>{{ $t('message.add') }}
     </v-btn>
-  </div>
+  </v-container>
 </template>
 
 <script>
