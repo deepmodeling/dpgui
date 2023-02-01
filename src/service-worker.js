@@ -8,7 +8,7 @@ const { precacheAndRoute } = workbox.precaching
 
 precacheAndRoute(self.__WB_MANIFEST, {})
 
-registerRoute('/', new StaleWhileRevalidate({ cacheName: 'index', plugins: [] }), 'GET')
+registerRoute('/', new networkFirst({ cacheName: 'index', plugins: [] }), 'GET')
 registerRoute(/\.(?:js|css)$/, new StaleWhileRevalidate({ cacheName: 'js-css', plugins: [] }), 'GET')
 registerRoute(/\.(?:png|gif|jpg|jpeg|svg)$/, new CacheFirst({ cacheName: 'images', plugins: [new ExpirationPlugin({ maxEntries: 60, maxAgeSeconds: 2592000 })] }), 'GET')
 registerRoute(/^https:\/\/\unpkg\.com/, new StaleWhileRevalidate({ cacheName: 'unpkg', plugins: [] }), 'GET')
