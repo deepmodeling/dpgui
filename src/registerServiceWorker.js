@@ -3,7 +3,7 @@
 import { register } from 'register-service-worker'
 
 if (process.env.NODE_ENV === 'production') {
-  register(process.env.BASE_URL ? process.env.BASE_URL : '/dpgui/' + `service-worker.js`, {
+  register((process.env.BASE_URL ? process.env.BASE_URL : '/dpgui/') + `service-worker.js`, {
     ready () {
       console.log(
         'App is being served from cache by a service worker.\n' +
