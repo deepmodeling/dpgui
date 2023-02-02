@@ -271,10 +271,10 @@
         :key="item.name"
         eager
       >
-          <DargsItem
-            ref="subitem"
-            :jdata="item"
-          />
+        <DargsItem
+          ref="subitem"
+          :jdata="item"
+        />
       </v-window-item>
     </v-window>
   </v-card>
