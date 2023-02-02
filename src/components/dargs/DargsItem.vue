@@ -50,20 +50,22 @@
           <v-col cols="auto">
             <v-list>
               <v-card variant="outlined">
-                <v-list-item-title class="font-weight-black">
+                <v-card-title class="font-weight-black">
                   {{ jdata.name }}
-                </v-list-item-title>
-                <p class="text--secondary">
+                </v-card-title>
+                <v-card-text class="text--secondary">
                   {{ jdata.doc }}
-                </p>
+                </v-card-text>
+                <v-list>
                 <v-list-item
                   v-for="(rr_jdata, index) in repeat_jdata"
                   :key="index"
                 >
                   <v-card variant="outlined">
-                    <v-list-item-title class="font-weight-bold">
+                    <v-card-title class="font-weight-bold">
                       {{ jdata.name }} - Item {{ index }}
-                    </v-list-item-title>
+                    </v-card-title>
+                    <v-card-actions>
                     <v-btn
                       block
                       prepend-icon="fa-solid fa-trash"
@@ -72,6 +74,7 @@
                     >
                       {{ $t('message.remove_repeat', { index }) }}
                     </v-btn>
+                    </v-card-actions>
                     <v-list>
                       <v-list-item
                         v-for="item in rr_jdata.sub_fields"
@@ -86,6 +89,8 @@
                     </v-list>
                   </v-card>
                 </v-list-item>
+                </v-list>
+                <v-card-actions>
                 <v-btn
                   block
                   prepend-icon="fa-solid fa-plus"
@@ -93,6 +98,7 @@
                 >
                   {{ $t('message.add_repeat') }}
                 </v-btn>
+                </v-card-actions>
               </v-card>
             </v-list>
           </v-col>
@@ -172,13 +178,13 @@
             v-if="Object.keys(jdata.sub_fields).length"
             variant="outlined"
           >
-            <v-list>
-              <v-list-item-title class="font-weight-black">
+              <v-card-title class="font-weight-black">
                 {{ jdata.name }}
-              </v-list-item-title>
-              <p class="text--secondary">
+              </v-card-title>
+              <v-card-text class="text--secondary">
                 {{ jdata.doc }}
-              </p>
+              </v-card-text>
+            <v-list>
               <v-list-item
                 v-for="item in jdata.sub_fields"
                 :key="item.name"
