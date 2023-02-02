@@ -57,47 +57,47 @@
                   {{ jdata.doc }}
                 </v-card-text>
                 <v-list>
-                <v-list-item
-                  v-for="(rr_jdata, index) in repeat_jdata"
-                  :key="index"
-                >
-                  <v-card variant="outlined">
-                    <v-card-title class="font-weight-bold">
-                      {{ jdata.name }} - Item {{ index }}
-                    </v-card-title>
-                    <v-card-actions>
-                    <v-btn
-                      block
-                      prepend-icon="fa-solid fa-trash"
-                      color="error"
-                      @click="remove_repeat(index)"
-                    >
-                      {{ $t('message.remove_repeat', { index }) }}
-                    </v-btn>
-                    </v-card-actions>
-                    <v-list>
-                      <v-list-item
-                        v-for="item in rr_jdata.sub_fields"
-                        :key="item.name"
-                      >
-                        <!-- jdata.sub_fields is object -->
-                        <DargsItem
-                          :ref="'subitem_' + index"
-                          :jdata="item"
-                        />
-                      </v-list-item>
-                    </v-list>
-                  </v-card>
-                </v-list-item>
+                  <v-list-item
+                    v-for="(rr_jdata, index) in repeat_jdata"
+                    :key="index"
+                  >
+                    <v-card variant="outlined">
+                      <v-card-title class="font-weight-bold">
+                        {{ jdata.name }} - Item {{ index }}
+                      </v-card-title>
+                      <v-card-actions>
+                        <v-btn
+                          block
+                          prepend-icon="fa-solid fa-trash"
+                          color="error"
+                          @click="remove_repeat(index)"
+                        >
+                          {{ $t('message.remove_repeat', { index }) }}
+                        </v-btn>
+                      </v-card-actions>
+                      <v-list>
+                        <v-list-item
+                          v-for="item in rr_jdata.sub_fields"
+                          :key="item.name"
+                        >
+                          <!-- jdata.sub_fields is object -->
+                          <DargsItem
+                            :ref="'subitem_' + index"
+                            :jdata="item"
+                          />
+                        </v-list-item>
+                      </v-list>
+                    </v-card>
+                  </v-list-item>
                 </v-list>
                 <v-card-actions>
-                <v-btn
-                  block
-                  prepend-icon="fa-solid fa-plus"
-                  @click="add_repeat()"
-                >
-                  {{ $t('message.add_repeat') }}
-                </v-btn>
+                  <v-btn
+                    block
+                    prepend-icon="fa-solid fa-plus"
+                    @click="add_repeat()"
+                  >
+                    {{ $t('message.add_repeat') }}
+                  </v-btn>
                 </v-card-actions>
               </v-card>
             </v-list>
@@ -178,12 +178,12 @@
             v-if="Object.keys(jdata.sub_fields).length"
             variant="outlined"
           >
-              <v-card-title class="font-weight-black">
-                {{ jdata.name }}
-              </v-card-title>
-              <v-card-text class="text--secondary">
-                {{ jdata.doc }}
-              </v-card-text>
+            <v-card-title class="font-weight-black">
+              {{ jdata.name }}
+            </v-card-title>
+            <v-card-text class="text--secondary">
+              {{ jdata.doc }}
+            </v-card-text>
             <v-list>
               <v-list-item
                 v-for="item in jdata.sub_fields"
