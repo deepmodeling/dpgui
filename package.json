@@ -30,7 +30,7 @@
     "@vue/cli-service": "~5.0.8",
     "@vue/compiler-sfc": "^3.2.47",
     "crypto-browserify": "^3.12.0",
-    "eslint": "^8.33.0",
+    "eslint": "^8.34.0",
     "eslint-plugin-vue": "^9.9.0",
     "ifdef-loader": "^2.3.2",
     "sass": "~1.58.0",
