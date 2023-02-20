@@ -5663,7 +5663,7 @@ __metadata:
     eslint-plugin-vue: ^9.9.0
     ifdef-loader: ^2.3.2
     register-service-worker: ^1.7.1
-    sass: ~1.58.0
+    sass: ~1.58.3
     sass-loader: ^13.2.0
     stream-browserify: ^3.0.0
     vue: ^3.2.47
@@ -10178,16 +10178,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:~1.58.0":
-  version: 1.58.0
-  resolution: "sass@npm:1.58.0"
+"sass@npm:~1.58.3":
+  version: 1.58.3
+  resolution: "sass@npm:1.58.3"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: a7219634881d2de6441fb619787fb1a02e3fa0333fb715be26aa335ba49d6bdb4f1105d9df70a80a67200893022b08346745783dc49046095d94fc6e044492d6
+  checksum: 35a2b98c037ef80fdc93c9b0be846e6ccc7d75596351a37ee79c397e66666d0a754c52c4696e746c0aff32327471e185343ca349e998a58340411adc9d0489a5
   languageName: node
   linkType: hard
 
