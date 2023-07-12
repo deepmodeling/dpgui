@@ -1,6 +1,4 @@
 # DP-GUI
-[![jsDelivr hits](https://data.jsdelivr.com/v1/package/gh/deepmodeling/dpgui/badge/all?style=rounded)](https://www.jsdelivr.com/package/gh/deepmodeling/dpgui)
-[![jsDelivr monthly hits](https://data.jsdelivr.com/v1/package/gh/deepmodeling/dpgui/badge?style=rounded)](https://www.jsdelivr.com/package/gh/deepmodeling/dpgui)
 
 A web-based GUI for user inputs.
 
