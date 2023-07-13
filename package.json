@@ -33,7 +33,7 @@
     "eslint": "^8.43.0",
     "eslint-plugin-vue": "^9.9.0",
     "ifdef-loader": "^2.3.2",
-    "sass": "~1.63.5",
+    "sass": "~1.63.6",
     "sass-loader": "^13.2.1",
     "stream-browserify": "^3.0.0",
     "webpack-plugin-vuetify": "^2.0.1"
