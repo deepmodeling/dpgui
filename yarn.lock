@@ -6000,7 +6000,7 @@ __metadata:
     vue-i18n: ^9.2.2
     vue-router: ^4.2.4
     vue3-storage: ^0.1.11
-    vuetify: ^3.3.12
+    vuetify: ^3.3.15
     webpack-plugin-vuetify: ^2.0.1
   languageName: unknown
   linkType: soft
@@ -11946,9 +11946,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vuetify@npm:^3.3.12":
-  version: 3.3.12
-  resolution: "vuetify@npm:3.3.12"
+"vuetify@npm:^3.3.15":
+  version: 3.3.15
+  resolution: "vuetify@npm:3.3.15"
   peerDependencies:
     typescript: ">=4.7"
     vite-plugin-vuetify: ^1.0.0-alpha.12
@@ -11964,7 +11964,7 @@ __metadata:
       optional: true
     webpack-plugin-vuetify:
       optional: true
-  checksum: ac237cdb12ded5f4797cc547cbfd273aa95f77ab199558ea4f5abcc82fd91015e4c74cf743a93d61116e6961409ccc6a533332ae7317ef4b3d126e6f1dc41d3d
+  checksum: b2e2d63bc4ed3cf249bdaa3f20cbcb9625bfa6fcaed4108bedde803b2b60a2fc5c764105d3513b3c0e8ecbcd4289a642a8fa0b8fd9baae8112865b3360b339ce
   languageName: node
   linkType: hard
 
