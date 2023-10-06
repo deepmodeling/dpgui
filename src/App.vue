@@ -73,17 +73,15 @@
       <v-spacer />
       <v-menu
         attach
-        bottom
-        offset-y
       >
-        <template #activator="{ on: menu }">
+        <template #activator="{ props }">
           <v-btn
             :aria-label="$t('message.languages')"
             text
             style="min-width: 48px"
-            v-on="menu"
+            v-bind="props"
           >
-            <v-icon>fa-language</v-icon>
+            <v-icon>fas fa-language</v-icon>
           </v-btn>
         </template>
         <v-list
@@ -120,6 +118,10 @@ export default {
     drawer: null,
     tools: [],
     installed_templates: {},
+    languages: [
+      { value: 'en', text: 'English' },
+      { value: 'zh', text: '中文' },
+    ]
   }),
   created: function () {
     this.$root.$app = this;

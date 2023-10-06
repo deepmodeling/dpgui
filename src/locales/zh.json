@@ -26,6 +26,7 @@
         "setting": "设置",
         "management": "管理",
         "add_repeat": "添加新项",
-        "remove_repeat": "移除第{index}项"
+        "remove_repeat": "移除第{index}项",
+        "languages": "语言"
     }
 }

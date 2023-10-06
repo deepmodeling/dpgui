@@ -26,6 +26,7 @@
         "setting": "Setting | Settings",
         "management": "Management",
         "add_repeat": "Add Item",
-        "remove_repeat": "Remove Item {index}"
+        "remove_repeat": "Remove Item {index}",
+        "languages": "Languages"
     }
 }
