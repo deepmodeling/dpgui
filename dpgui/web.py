@@ -9,6 +9,8 @@ from werkzeug.middleware.shared_data import SharedDataMiddleware
 from werkzeug.routing import Map, Rule
 from werkzeug.wrappers import Request, Response
 
+from .dargs import generate_input_json
+
 dist_dir = Path(__file__).parent / "dist"
 log = logging.getLogger(__name__)
 
@@ -21,6 +23,7 @@ class App:
             [
                 Rule("/", endpoint="app"),
                 Rule("/<path:route>", endpoint="app"),
+                Rule("/api/inputs", endpoint="inputs"),
             ]
         )
         self.wsgi_app = SharedDataMiddleware(
@@ -44,6 +47,10 @@ class App:
         with open(dist_dir / "index.html") as f:
             html = f.read()
         return Response(html, mimetype="text/html")
+
+    def on_inputs(self, request, **kwargs):
+        """Serve the input JSON."""
+        return Response(generate_input_json(), mimetype="application/json")
 
     def wsgi_app(self, environ, start_response):
         """WSGI application."""
