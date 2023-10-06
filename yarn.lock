@@ -2524,10 +2524,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@deepmodeling/args@npm:0.0.11":
-  version: 0.0.11
-  resolution: "@deepmodeling/args@npm:0.0.11"
-  checksum: 57ca01e599aa1d2d842cbf0586a14c87709c578949f309b1218c9a1bc68fd743355f28a0e0e1d8197e281d961ed93ce21f5af1150f2238914378ad68b3fd4260
+"@deepmodeling/args@npm:0.0.12":
+  version: 0.0.12
+  resolution: "@deepmodeling/args@npm:0.0.12"
+  checksum: f74780b099120ad165d839ff5862d4c5b62a3702dc9eb8d5a6958b8f9b44b4d2a76432cfc5c22f19a71e78408aa015448436df1d07957d9524459e5c3066f6c3
   languageName: node
   linkType: hard
 
@@ -6009,7 +6009,7 @@ __metadata:
   dependencies:
     "@babel/core": ^7.23.0
     "@babel/eslint-parser": ^7.22.15
-    "@deepmodeling/args": 0.0.11
+    "@deepmodeling/args": 0.0.12
     "@fortawesome/fontawesome-free": ^6.4.2
     "@vue/cli-plugin-babel": ~5.0.8
     "@vue/cli-plugin-eslint": ~5.0.8
@@ -6024,7 +6024,7 @@ __metadata:
     eslint-plugin-vue: ^9.17.0
     ifdef-loader: ^2.3.2
     register-service-worker: ^1.7.1
-    sass: ~1.68.0
+    sass: ~1.69.0
     sass-loader: ^13.3.2
     stream-browserify: ^3.0.0
     vue: ^3.3.4
@@ -10592,16 +10592,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:~1.68.0":
-  version: 1.68.0
-  resolution: "sass@npm:1.68.0"
+"sass@npm:~1.69.0":
+  version: 1.69.0
+  resolution: "sass@npm:1.69.0"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 65ccede83c96768beeb8dcaf67957b7c76b12ff1276bfd2849d7be151d46ba1400048a67717e6e5e4969bc75e87348e5530f5f272833f2e60a891c21a33d8ab0
+  checksum: eabea31ea3b1dd529c7eff345c8b6468afe6ab8011bd4f95caa2cffb8fb115cc055ea21de425be6197f7ed22516f5652eccb98d315d592ea152ada553f964b8a
   languageName: node
   linkType: hard
 
