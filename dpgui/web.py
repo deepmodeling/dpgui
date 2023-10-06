@@ -1,27 +1,67 @@
 """Web server for serving the web app."""
 
-import os
-from http.server import HTTPServer, SimpleHTTPRequestHandler
+import logging
+from pathlib import Path
 
-dist_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "dist")
+from waitress import serve
+from werkzeug.exceptions import HTTPException
+from werkzeug.middleware.shared_data import SharedDataMiddleware
+from werkzeug.routing import Map, Rule
+from werkzeug.wrappers import Request, Response
 
-
-class Handler(SimpleHTTPRequestHandler):
-    """Handler for serving the web app."""
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, directory=dist_dir, **kwargs)
-
-    def send_error(self, code, message=None):
-        """Send an error message."""
-        if code == 404:
-            with open(os.path.join(dist_dir, "index.html")) as f:
-                self.error_message_format = f.read()
-        SimpleHTTPRequestHandler.send_error(self, code, message)
+dist_dir = Path(__file__).parent / "dist"
+log = logging.getLogger(__name__)
 
 
-def run(port: int):
+class App:
+    """Web server for serving the web app."""
+
+    def __init__(self) -> None:
+        self.url_map = Map(
+            [
+                Rule("/", endpoint="app"),
+                Rule("/<path:route>", endpoint="app"),
+            ]
+        )
+        self.wsgi_app = SharedDataMiddleware(
+            self.wsgi_app,
+            {
+                "/": str(dist_dir),
+            },
+        )
+
+    def dispatch_request(self, request):
+        """Dispatch the request to the appropriate handler."""
+        adapter = self.url_map.bind_to_environ(request.environ)
+        try:
+            endpoint, values = adapter.match()
+            return getattr(self, f"on_{endpoint}")(request, **values)
+        except HTTPException as e:
+            return e
+
+    def on_app(self, request, **kwargs):
+        """Serve the web app."""
+        with open(dist_dir / "index.html") as f:
+            html = f.read()
+        return Response(html, mimetype="text/html")
+
+    def wsgi_app(self, environ, start_response):
+        """WSGI application."""
+        request = Request(environ)
+        response = self.dispatch_request(request)
+        return response(environ, start_response)
+
+    def __call__(self, environ, start_response):
+        """Call the WSGI application."""
+        return self.wsgi_app(environ, start_response)
+
+
+def run(port: int, bind_all: bool = False):
     """Run the web server."""
-    server_address = ("", port)
-    httpd = HTTPServer(server_address, Handler)
-    httpd.serve_forever()
+    app = App()
+    if bind_all:
+        listen = f"0.0.0.0:{port} [::]:{port}"
+    else:
+        listen = f"127.0.0.1:{port} [::1]:{port}"
+    log.info(f"Open DP-GUI from http://localhost:{port}/")
+    serve(app, listen=listen)

@@ -27,7 +27,8 @@ classifiers = [
     "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
 ]
 dependencies = [
-
+    "werkzeug",
+    "waitress",
 ]
 requires-python = ">=3.7"
 readme = "README.md"
