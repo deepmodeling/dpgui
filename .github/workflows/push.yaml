@@ -21,7 +21,8 @@ jobs:
     - run: ln -s index.html dist/404.html
     - name: Upload Pages artifact
       uses: actions/upload-pages-artifact@v2
-      path: dist
+      with:
+        path: dist
   deploy:
     needs: build
     permissions:
