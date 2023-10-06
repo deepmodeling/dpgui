@@ -71,6 +71,35 @@
       </div>
 
       <v-spacer />
+      <v-menu
+        attach
+        bottom
+        offset-y
+      >
+        <template #activator="{ on: menu }">
+          <v-btn
+            :aria-label="$t('message.languages')"
+            text
+            style="min-width: 48px"
+            v-on="menu"
+          >
+            <v-icon>fa-language</v-icon>
+          </v-btn>
+        </template>
+        <v-list
+          dense
+          light
+        >
+          <v-list-item
+            v-for="language in languages"
+            :key="language.value"
+            avatar
+            @click="updatelang(language.value)"
+          >
+            <v-list-item-title>{{ language.text }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
     </v-app-bar>
 
     <v-main>
@@ -185,6 +214,10 @@ export default {
     update_navi: function () {
       this.tools = this.navi();
     },
+    updatelang (value) {
+      this.$i18n.locale = value;
+      this.$storage.getStorageSync('lang', value);
+    }
   },
 };
 </script>
