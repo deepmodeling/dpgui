@@ -90,16 +90,29 @@ export default {
   data: () => ({
     drawer: null,
     tools: [],
+    installed_templates: {},
   }),
   created: function () {
     this.$root.$app = this;
     this.tools.push(...this.navi());
+    this.fetch_data();
   },
   methods: {
+    fetch_data: function () {
+      // fetch installed templates
+      if (process.env.VUE_APP_DPGUI_PYTHON === "1") {
+        fetch("/api/inputs", {method: "GET"})
+          .then(response => response.json())
+          .then(data => {
+            this.installed_templates = data;
+            this.update_navi();
+          });
+      }
+    },
     navi: function () {
       const builtin_templates = this.builtin_templates();
       const customized_templates = this.customized_templates();
-      const installed_templates = this.installed_templates();
+      const installed_templates = this.navi_installed_templates();
       return [
         {
           name: this.$t("message.home"),
@@ -159,9 +172,15 @@ export default {
         ),
       ];
     },
-    installed_templates: function () {
-      // TODO
-      return [];
+    navi_installed_templates: function () {
+      return [
+        ...Object.entries(this.$root.$app.installed_templates || {}).map(
+          ([kk, vv]) => ({
+            name: vv.name,
+            to: `/input/${kk}`,
+          })
+        ),
+      ];
     },
     update_navi: function () {
       this.tools = this.navi();

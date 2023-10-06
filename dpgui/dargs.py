@@ -1,4 +1,5 @@
 """Export all installed dargs inputs."""
+import hashlib
 import json
 
 try:
@@ -21,11 +22,14 @@ def generate_input_json() -> str:
         eps = metadata.entry_points(group="dpgui")
     except TypeError:
         eps = metadata.entry_points().get("dpgui", [])
-    args = {
-        ep.name: {
-            "name": ep.name,
-            "argument": ep.load()(),
+    args = {}
+    for ep in eps:
+        obj = ep.load()()
+        name = ep.name
+        jdata = json.dumps(obj, cls=ArgumentEncoder, separators=(",", ":"))
+        jhash = hashlib.sha256(jdata.encode("utf-8")).hexdigest()
+        args[jhash] = {
+            "name": name,
+            "obj": obj,
         }
-        for ep in eps
-    }
     return json.dumps(args, cls=ArgumentEncoder, separators=(",", ":"))

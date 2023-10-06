@@ -28,7 +28,9 @@ class CustomBuildHook(BuildHookInterface):
 
         node_call([yarn_path], cwd=project_dir)
         node_call(
-            [yarn_path, "build"], cwd=project_dir, env={**os.environ, "BASE_URL": "/"}
+            [yarn_path, "build"],
+            cwd=project_dir,
+            env={**os.environ, "BASE_URL": "/", "VUE_APP_DPGUI_PYTHON": "1"},
         )
 
         bundle_html_path = project_dir / "dist"

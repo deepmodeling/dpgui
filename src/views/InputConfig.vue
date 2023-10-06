@@ -42,6 +42,14 @@ export default {
   methods: {
     all_items: function () {
       return [
+        ...Object.entries(this.$root.$app.installed_templates || {}).map(
+          ([kk, vv]) => ({
+            name: vv.name,
+            id: kk,
+            to: `/input/${kk}`,
+            delete: false,
+          })
+        ),
         ...Object.entries(args).map(([kk, vv]) => ({
           name: vv.name,
           id: kk,
