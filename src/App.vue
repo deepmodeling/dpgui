@@ -214,9 +214,9 @@ export default {
     update_navi: function () {
       this.tools = this.navi();
     },
-    updatelang (value) {
+    updatelang: function (value) {
       this.$i18n.locale = value;
-      this.$storage.getStorageSync('lang', value);
+      this.$storage.setStorageSync('lang', value);
     }
   },
 };
