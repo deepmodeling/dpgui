@@ -1,0 +1,80 @@
+[build-system]
+requires = [
+    "hatchling",
+    "hatch-nodejs-version",
+    "nodejs-wheel",
+    "pyyaml",
+]
+build-backend = "hatchling.build"
+
+[project]
+name = "dpgui"
+dynamic = ["version"]
+description = "A web-based GUI for user inputs."
+authors = [
+    { name = "DeepModeling" },
+]
+license = { file = "LICENSE" }
+classifiers = [
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+]
+dependencies = [
+
+]
+requires-python = ">=3.7"
+readme = "README.md"
+keywords = ["gui"]
+
+[project.urls]
+repository = "https://github.com/deepmodeling/dpgui"
+
+[project.scripts]
+dpgui = "dpgui.cli:dpgui"
+
+[tool.hatch.build]
+artifacts = [
+    "/dpgui/dist",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = [
+    "dpgui",
+]
+
+[tool.hatch.version]
+source = "nodejs"
+
+[tool.hatch.build.hooks.custom]
+[tool.hatch.build.targets.wheel.hooks.custom]
+
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+select = [
+    "E", # errors
+    "F", # pyflakes
+    "D", # pydocstyle
+    "I", # isort
+    "UP", # pyupgrade
+    "C4", # flake8-comprehensions
+    "RUF", # ruff
+    "NPY", # numpy
+]
+ignore = [
+    "E501", # line too long
+    "E741", # ambiguous variable name
+    "E402", # module level import not at top of file
+    "D205", # 1 blank line required between summary line and description
+]
+
+[tool.ruff.pydocstyle]
+convention = "numpy"
