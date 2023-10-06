@@ -97,7 +97,9 @@ export default {
   },
   methods: {
     navi: function () {
-      const templates = this.templates();
+      const builtin_templates = this.builtin_templates();
+      const customized_templates = this.customized_templates();
+      const installed_templates = this.installed_templates();
       return [
         {
           name: this.$t("message.home"),
@@ -109,8 +111,16 @@ export default {
           icon: "fas fa-keyboard",
           sub: [
             {
-              name: this.$tc("message.template", templates.length),
-              sub: templates,
+              name: this.$tc("message.installed_template", installed_templates.length),
+              sub: installed_templates,
+            },
+            {
+              name: this.$tc("message.builtin_template", builtin_templates.length),
+              sub: builtin_templates,
+            },
+            {
+              name: this.$tc("message.customized_template", customized_templates.length),
+              sub: customized_templates,
             },
             {
               name: this.$tc("message.setting", 2),
@@ -131,12 +141,16 @@ export default {
         },
       ];
     },
-    templates: function () {
+    builtin_templates: function () {
       return [
         ...Object.entries(args).map(([kk, vv]) => ({
           name: vv.name,
           to: `/input/${kk}`,
         })),
+      ]
+    },
+    customized_templates: function () {
+      return [
         ...Object.entries(this.$storage.getStorageSync("CustomTemplate") || {}).map(
           ([kk, vv]) => ({
             name: vv.name,
@@ -144,6 +158,10 @@ export default {
           })
         ),
       ];
+    },
+    installed_templates: function () {
+      // TODO
+      return [];
     },
     update_navi: function () {
       this.tools = this.navi();
