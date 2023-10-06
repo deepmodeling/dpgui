@@ -71,9 +71,7 @@
       </div>
 
       <v-spacer />
-      <v-menu
-        attach
-      >
+      <v-menu>
         <template #activator="{ props }">
           <v-btn
             :aria-label="$t('message.languages')"
@@ -89,8 +87,8 @@
           light
         >
           <v-list-item
-            v-for="language in languages"
-            :key="language.value"
+            v-for="(language, kk) in languages"
+            :key="kk"
             avatar
             @click="updatelang(language.value)"
           >
