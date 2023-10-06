@@ -126,6 +126,9 @@ export default {
     this.tools.push(...this.navi());
     this.fetch_data();
   },
+  mounted: function () {
+    this.$i18n.locale = this.$storage.setStorageSync('lang') || this.$i18n.locale;
+  },
   methods: {
     fetch_data: function () {
       // fetch installed templates
@@ -217,6 +220,7 @@ export default {
     updatelang: function (value) {
       this.$i18n.locale = value;
       this.$storage.setStorageSync('lang', value);
+      this.update_navi();
     }
   },
 };
