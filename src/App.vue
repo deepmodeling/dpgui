@@ -123,15 +123,15 @@ export default {
           name: this.$t("message.software_input"),
           icon: "fas fa-keyboard",
           sub: [
-            {
+            installed_templates.length === 0 ? null : {
               name: this.$tc("message.installed_template", installed_templates.length),
               sub: installed_templates,
             },
-            {
+            builtin_templates.length === 0 ? null : {
               name: this.$tc("message.builtin_template", builtin_templates.length),
               sub: builtin_templates,
             },
-            {
+            customized_templates.length === 0 ? null : {
               name: this.$tc("message.customized_template", customized_templates.length),
               sub: customized_templates,
             },
@@ -150,7 +150,7 @@ export default {
                 },
               ],
             },
-          ],
+          ].filter(x => x),
         },
       ];
     },
