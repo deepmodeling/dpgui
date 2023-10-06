@@ -19,12 +19,20 @@ jobs:
     - run: yarn install
     - run: yarn build
     - run: ln -s index.html dist/404.html
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@releases/v3
-      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-      with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: dist
-        BASE_BRANCH: master
-        CLEAN: true
+    - name: Upload Pages artifact
+      uses: actions/upload-pages-artifact@v2
+      path: dist
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
