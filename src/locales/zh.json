@@ -1,0 +1,32 @@
+{
+    "message": {
+        "optional": "（可选）",
+        "optional_default": "（可选，默认值：{default}）",
+        "typeof": "{name}的类型",
+        "one_element_per_row": "每行输入一项。",
+        "select_type": "选择{name}的类型",
+        "load_example": "加载示例",
+        "load_json": "加载JSON文件",
+        "select_example": "选择示例",
+        "save_json": "保存JSON文件",
+        "loading": "加载中...",
+        "invalid_id": "ID错误！",
+        "template": "模板",
+        "builtin_template": "DeepModeling社区模板",
+        "customized_template": "自定义模板",
+        "installed_template": "已安装的模板",
+        "template_file": "模板文件",
+        "my_template": "我的模板",
+        "name": "名称",
+        "add": "添加",
+        "add_new_template": "新模板",
+        "delete": "删除",
+        "home": "首页",
+        "software_input": "软件输入",
+        "setting": "设置",
+        "management": "管理",
+        "add_repeat": "添加新项",
+        "remove_repeat": "移除第{index}项",
+        "languages": "语言"
+    }
+}

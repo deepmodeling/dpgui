@@ -71,6 +71,31 @@
       </div>
 
       <v-spacer />
+      <v-menu>
+        <template #activator="{ props }">
+          <v-btn
+            :aria-label="$t('message.languages')"
+            text
+            style="min-width: 48px"
+            v-bind="props"
+          >
+            <v-icon>fas fa-language</v-icon>
+          </v-btn>
+        </template>
+        <v-list
+          dense
+          light
+        >
+          <v-list-item
+            v-for="(language, kk) in languages"
+            :key="kk"
+            avatar
+            @click="updatelang(language.value)"
+          >
+            <v-list-item-title>{{ language.text }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
     </v-app-bar>
 
     <v-main>
@@ -91,11 +116,18 @@ export default {
     drawer: null,
     tools: [],
     installed_templates: {},
+    languages: [
+      { value: 'en', text: 'English' },
+      { value: 'zh', text: '中文' },
+    ]
   }),
   created: function () {
     this.$root.$app = this;
     this.tools.push(...this.navi());
     this.fetch_data();
+  },
+  mounted: function () {
+    this.$i18n.locale = this.$storage.setStorageSync('lang') || this.$i18n.locale;
   },
   methods: {
     fetch_data: function () {
@@ -185,6 +217,11 @@ export default {
     update_navi: function () {
       this.tools = this.navi();
     },
+    updatelang: function (value) {
+      this.$i18n.locale = value;
+      this.$storage.setStorageSync('lang', value);
+      this.update_navi();
+    }
   },
 };
 </script>
