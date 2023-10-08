@@ -42,7 +42,7 @@ export default {
           name: name,
           obj: obj,
         };
-        that.$storage.set("CustomTemplate", curr);
+        that.$storage.setStorageSync("CustomTemplate", curr);
         that.$router.push("/input");
         that.$root.$app.update_navi();
       };
