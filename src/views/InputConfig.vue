@@ -6,14 +6,14 @@
       :items-per-page="10"
     >
       <template #item.template="{ item }">
-        <v-btn :to="item.props.title.to">
+        <v-btn :to="item.to">
           {{ $tc('message.template') }}
         </v-btn>
       </template>
       <template #item.delete="{ item }">
         <v-btn
-          v-if="item.props.title.delete"
-          @click="delete_item(item.props.title.id)"
+          v-if="item.delete"
+          @click="delete_item(item.id)"
         >
           Delete
         </v-btn>
