@@ -61,7 +61,7 @@ export default {
     delete_item: function (key) {
       const curr = this.$storage.getStorageSync("CustomTemplate") || {};
       delete curr[key];
-      this.$storage.set("CustomTemplate", curr);
+      this.$storage.setStorageSync("CustomTemplate", curr);
       this.items = this.all_items();
       this.$root.$app.update_navi();
     },
