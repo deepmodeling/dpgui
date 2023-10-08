@@ -1,6 +1,7 @@
 """DP-GUI Python package."""
 import logging
 
+from .dargs import generate_input_json as generate_dpgui_templates
 from .web import run as start_dpgui
 
 logger = logging.getLogger(__name__)
@@ -10,4 +11,4 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 
-__all__ = ["start_dpgui"]
+__all__ = ["start_dpgui", "generate_dpgui_templates"]
