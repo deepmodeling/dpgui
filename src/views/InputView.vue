@@ -67,7 +67,7 @@ export default {
           Object.assign(prop, { loading: true });
         } else {
           // custom?
-          const bb = this.$storage.getStorageSync("CustomTemplate", {})[id];
+          const bb = (this.$storage.getStorageSync("CustomTemplate") || {})[id];
           if (bb) {
             Object.assign(prop, { jdata: bb.obj });
           }

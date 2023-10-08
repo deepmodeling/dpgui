@@ -37,12 +37,12 @@ export default {
           .update(e.target.result)
           .digest("hex");
         const obj = JSON.parse(e.target.result);
-        const curr = that.$storage.getStorageSync("CustomTemplate", {});
+        const curr = that.$storage.getStorageSync("CustomTemplate") || {};
         curr[hash] = {
           name: name,
           obj: obj,
         };
-        that.$storage.set("CustomTemplate", curr);
+        that.$storage.setStorageSync("CustomTemplate", curr);
         that.$router.push("/input");
         that.$root.$app.update_navi();
       };
