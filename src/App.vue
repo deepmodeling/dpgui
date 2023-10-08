@@ -90,14 +90,29 @@ export default {
   data: () => ({
     drawer: null,
     tools: [],
+    installed_templates: {},
   }),
   created: function () {
     this.$root.$app = this;
     this.tools.push(...this.navi());
+    this.fetch_data();
   },
   methods: {
+    fetch_data: function () {
+      // fetch installed templates
+      if (process.env.VUE_APP_DPGUI_PYTHON === "1") {
+        fetch("/api/inputs", {method: "GET"})
+          .then(response => response.json())
+          .then(data => {
+            this.installed_templates = data;
+            this.update_navi();
+          });
+      }
+    },
     navi: function () {
-      const templates = this.templates();
+      const builtin_templates = this.builtin_templates();
+      const customized_templates = this.customized_templates();
+      const installed_templates = this.navi_installed_templates();
       return [
         {
           name: this.$t("message.home"),
@@ -108,9 +123,17 @@ export default {
           name: this.$t("message.software_input"),
           icon: "fas fa-keyboard",
           sub: [
-            {
-              name: this.$tc("message.template", templates.length),
-              sub: templates,
+            installed_templates.length === 0 ? null : {
+              name: this.$tc("message.installed_template", installed_templates.length),
+              sub: installed_templates,
+            },
+            builtin_templates.length === 0 ? null : {
+              name: this.$tc("message.builtin_template", builtin_templates.length),
+              sub: builtin_templates,
+            },
+            customized_templates.length === 0 ? null : {
+              name: this.$tc("message.customized_template", customized_templates.length),
+              sub: customized_templates,
             },
             {
               name: this.$tc("message.setting", 2),
@@ -127,17 +150,31 @@ export default {
                 },
               ],
             },
-          ],
+          ].filter(x => x),
         },
       ];
     },
-    templates: function () {
+    builtin_templates: function () {
       return [
         ...Object.entries(args).map(([kk, vv]) => ({
           name: vv.name,
           to: `/input/${kk}`,
         })),
+      ]
+    },
+    customized_templates: function () {
+      return [
         ...Object.entries(this.$storage.getStorageSync("CustomTemplate") || {}).map(
+          ([kk, vv]) => ({
+            name: vv.name,
+            to: `/input/${kk}`,
+          })
+        ),
+      ];
+    },
+    navi_installed_templates: function () {
+      return [
+        ...Object.entries(this.$root.$app.installed_templates || {}).map(
           ([kk, vv]) => ({
             name: vv.name,
             to: `/input/${kk}`,

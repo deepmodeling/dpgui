@@ -70,6 +70,11 @@ export default {
           const bb = (this.$storage.getStorageSync("CustomTemplate") || {})[id];
           if (bb) {
             Object.assign(prop, { jdata: bb.obj });
+          } else {
+            const cc = (this.$root.$app.installed_templates || {})[id];
+            if (cc) {
+              Object.assign(prop, { jdata: cc.obj });
+            }
           }
         }
       }
