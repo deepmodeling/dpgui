@@ -4,15 +4,10 @@ import { aliases, fa } from 'vuetify/iconsets/fa'
 import { VDataTable } from 'vuetify/labs/VDataTable'
 import '@fortawesome/fontawesome-free/css/all.css'
 
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
-
 const vuetify = createVuetify({
   components : {
-    ...components,
     VDataTable,
   },
-  directives,
   icons: {
     defaultSet: 'fa',
     aliases,

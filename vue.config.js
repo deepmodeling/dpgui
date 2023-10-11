@@ -1,3 +1,5 @@
+const { VuetifyPlugin } = require('webpack-plugin-vuetify')
+
 module.exports = {
   transpileDependencies: [
     'vuetify'
@@ -10,6 +12,9 @@ module.exports = {
         "stream": require.resolve("stream-browserify"),
       },
     },
+    plugins: [
+      new VuetifyPlugin(),
+    ],
   },
   chainWebpack: config => {
     config
