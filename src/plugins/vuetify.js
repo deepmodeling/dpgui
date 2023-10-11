@@ -1,4 +1,4 @@
-import 'vuetify/styles'
+import '@/styles/main.scss'
 import { createVuetify } from 'vuetify';
 import { aliases, fa } from 'vuetify/iconsets/fa'
 import { VDataTable } from 'vuetify/labs/VDataTable'
