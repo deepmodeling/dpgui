@@ -1,3 +1,5 @@
+const { VuetifyPlugin } = require('webpack-plugin-vuetify')
+
 module.exports = {
   transpileDependencies: [
     'vuetify'
@@ -30,5 +32,8 @@ module.exports = {
         "ifdef-uncomment-prefix": "// #code ",
       })
       .end()
-  }
+  },
+  plugins: [
+    new VuetifyPlugin(),
+  ],
 }
