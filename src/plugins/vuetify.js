@@ -6,10 +6,8 @@ import '@fortawesome/fontawesome-free/css/all.css'
 
 const vuetify = createVuetify({
   components : {
-    ...components,
     VDataTable,
   },
-  directives,
   icons: {
     defaultSet: 'fa',
     aliases,
