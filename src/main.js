@@ -9,8 +9,8 @@ import './registerServiceWorker'
 import i18n from './i18n'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
+// only import used icons
+import { faLanguage, faHome, faKeyboard, faCog, faPlusCircle, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 
 const app = createApp({
@@ -18,8 +18,7 @@ const app = createApp({
 })
 
 app.component('FontAwesomeIcon', FontAwesomeIcon)
-library.add(fas)
-library.add(far)
+library.add(faLanguage, faHome, faKeyboard, faCog, faPlusCircle, faTrash, faPlus)
 
 app.use(vuetify)
 app.use(router)
