@@ -12,6 +12,9 @@ module.exports = {
         "stream": require.resolve("stream-browserify"),
       },
     },
+    plugins: [
+      new VuetifyPlugin(),
+    ],
   },
   chainWebpack: config => {
     config
@@ -32,8 +35,5 @@ module.exports = {
         "ifdef-uncomment-prefix": "// #code ",
       })
       .end()
-  },
-  plugins: [
-    new VuetifyPlugin(),
-  ],
+  }
 }
