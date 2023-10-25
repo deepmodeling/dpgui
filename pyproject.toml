@@ -2,7 +2,7 @@
 requires = [
     "hatchling",
     "hatch-nodejs-version",
-    "nodejs-wheel",
+    "nodejs-wheel~=20.8",
     "pyyaml",
 ]
 build-backend = "hatchling.build"
