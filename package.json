@@ -10,7 +10,7 @@
   "dependencies": {
     "@deepmodeling/args": "0.0.13",
     "axios": "^1.6.0",
-    "core-js": "^3.33.1",
+    "core-js": "^3.33.2",
     "register-service-worker": "^1.7.1",
     "vue": "^3.3.7",
     "vue-axios": "^3.5.2",
