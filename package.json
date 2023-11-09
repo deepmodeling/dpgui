@@ -20,7 +20,7 @@
     "vuetify": "^3.3.23"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.2",
+    "@babel/core": "^7.23.3",
     "@babel/eslint-parser": "^7.22.15",
     "@fortawesome/fontawesome-free": "^6.4.2",
     "@vue/cli-plugin-babel": "~5.0.8",
