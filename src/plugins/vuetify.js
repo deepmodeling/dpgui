@@ -1,12 +1,10 @@
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify';
 import { aliases, fa } from 'vuetify/iconsets/fa'
-import { VDataTable } from 'vuetify/labs/VDataTable'
 import '@fortawesome/fontawesome-free/css/all.css'
 
 const vuetify = createVuetify({
   components : {
-    VDataTable,
   },
   icons: {
     defaultSet: 'fa',
