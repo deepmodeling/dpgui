@@ -1,4 +1,5 @@
 """DP-GUI Python package."""
+
 import logging
 
 from .dargs import generate_input_json as generate_dpgui_templates

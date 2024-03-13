@@ -1,4 +1,5 @@
 """Hatch build hook for dpgui."""
+
 import os
 import subprocess
 from pathlib import Path
