@@ -1,52 +1,38 @@
 <template>
   <!-- list -->
-  <div
-    v-if="Array.isArray(jdata)"
-    class="w-100"
-  >
+  <div v-if="Array.isArray(jdata)" class="w-100">
     <v-list>
-      <v-list-item
-        v-for="item in jdata"
-        :key="item.name"
-      >
-        <DargsItem
-          ref="subitem"
-          :jdata="item"
-        />
+      <v-list-item v-for="item in jdata" :key="item.name">
+        <DargsItem ref="subitem" :jdata="item" />
       </v-list-item>
     </v-list>
   </div>
-  <div
-    v-else-if="jdata.object == 'Argument'"
-    class="w-100 mx-1"
-  >
+  <div v-else-if="jdata.object == 'Argument'" class="w-100 mx-1">
     <v-row class="w-100">
       <v-col cols="auto">
-        <v-checkbox
-          v-if="jdata.optional"
-          v-model="check"
-        />
-      </v-col><v-col>
+        <v-checkbox v-if="jdata.optional" v-model="check" /> </v-col
+      ><v-col>
         <v-row v-if="jdata.type.length > 1">
           <v-col cols="auto">
             <v-list-subheader>
-              {{ $t('message.typeof', { name: jdata.name }) }}
-              <small v-if="jdata.optional">{{ jdata.default ? $t('message.optional_default', { default: jdata.default }) : $t('message.optional') }}</small>
+              {{ $t("message.typeof", { name: jdata.name }) }}
+              <small v-if="jdata.optional">{{
+                jdata.default
+                  ? $t("message.optional_default", { default: jdata.default })
+                  : $t("message.optional")
+              }}</small>
             </v-list-subheader>
           </v-col>
           <v-col>
             <v-select
               v-model="select_type"
               :items="jdata.type"
-              :hint="$t('message.select_type', {name: jdata.name})"
+              :hint="$t('message.select_type', { name: jdata.name })"
             />
           </v-col>
         </v-row>
         <!-- list of arguments, repeat=True -->
-        <v-row
-          v-if="select_type == 'list' && jdata.repeat"
-          class="w-100"
-        >
+        <v-row v-if="select_type == 'list' && jdata.repeat" class="w-100">
           <v-col cols="auto">
             <v-list>
               <v-card variant="outlined">
@@ -72,7 +58,7 @@
                           color="error"
                           @click="remove_repeat(index)"
                         >
-                          {{ $t('message.remove_repeat', { index }) }}
+                          {{ $t("message.remove_repeat", { index }) }}
                         </v-btn>
                       </v-card-actions>
                       <v-list>
@@ -81,10 +67,7 @@
                           :key="item.name"
                         >
                           <!-- jdata.sub_fields is object -->
-                          <DargsItem
-                            :ref="'subitem_' + index"
-                            :jdata="item"
-                          />
+                          <DargsItem :ref="'subitem_' + index" :jdata="item" />
                         </v-list-item>
                       </v-list>
                     </v-card>
@@ -96,7 +79,7 @@
                     prepend-icon="fa-solid fa-plus"
                     @click="add_repeat()"
                   >
-                    {{ $t('message.add_repeat') }}
+                    {{ $t("message.add_repeat") }}
                   </v-btn>
                 </v-card-actions>
               </v-card>
@@ -116,14 +99,16 @@
         >
           <template #label>
             <div>
-              {{ jdata.name }} <small v-if="jdata.optional">{{ jdata.default ? $t('message.optional_default', { default: jdata.default }) : $t('message.optional') }}</small>
+              {{ jdata.name }}
+              <small v-if="jdata.optional">{{
+                jdata.default
+                  ? $t("message.optional_default", { default: jdata.default })
+                  : $t("message.optional")
+              }}</small>
             </div>
           </template>
           <template #message="{ message, key }">
-            <div
-              :key="key"
-              v-html="message.replaceAll('\n', '<br/>')"
-            />
+            <div :key="key" v-html="message.replaceAll('\n', '<br/>')" />
           </template>
         </v-textarea>
         <!-- text field for str, int, float -->
@@ -141,14 +126,16 @@
         >
           <template #label>
             <div>
-              {{ jdata.name }} <small v-if="jdata.optional">{{ jdata.default ? $t('message.optional_default', { default: jdata.default }) : $t('message.optional') }}</small>
+              {{ jdata.name }}
+              <small v-if="jdata.optional">{{
+                jdata.default
+                  ? $t("message.optional_default", { default: jdata.default })
+                  : $t("message.optional")
+              }}</small>
             </div>
           </template>
           <template #message="{ message, key }">
-            <div
-              :key="key"
-              v-html="message.replaceAll('\n', '<br/>')"
-            />
+            <div :key="key" v-html="message.replaceAll('\n', '<br/>')" />
           </template>
         </v-text-field>
 
@@ -161,14 +148,16 @@
         >
           <template #label>
             <div>
-              {{ jdata.name }} <small v-if="jdata.optional">{{ jdata.default ? $t('message.optional_default', { default: jdata.default }) : $t('message.optional') }}</small>
+              {{ jdata.name }}
+              <small v-if="jdata.optional">{{
+                jdata.default
+                  ? $t("message.optional_default", { default: jdata.default })
+                  : $t("message.optional")
+              }}</small>
             </div>
           </template>
           <template #message="{ message, key }">
-            <div
-              :key="key"
-              v-html="message.replaceAll('\n', '<br/>')"
-            />
+            <div :key="key" v-html="message.replaceAll('\n', '<br/>')" />
           </template>
         </v-switch>
 
@@ -185,46 +174,34 @@
               {{ jdata.doc }}
             </v-card-text>
             <v-list>
-              <v-list-item
-                v-for="item in jdata.sub_fields"
-                :key="item.name"
-              >
+              <v-list-item v-for="item in jdata.sub_fields" :key="item.name">
                 <!-- jdata.sub_fields is object -->
-                <DargsItem
-                  ref="subitem"
-                  :jdata="item"
-                />
+                <DargsItem ref="subitem" :jdata="item" />
               </v-list-item>
             </v-list>
           </v-card>
 
           <!-- dict variant -->
-          <v-list
-            v-if="Object.keys(jdata.sub_variants).length"
-            subheader
-          >
+          <v-list v-if="Object.keys(jdata.sub_variants).length" subheader>
             <v-list-item-title class="font-weight-black">
               {{ jdata.name }}
             </v-list-item-title>
             <p class="text--secondary">
               {{ jdata.doc }}
             </p>
-            <v-list-item
-              v-for="item in jdata.sub_variants"
-              :key="item.name"
-            >
+            <v-list-item v-for="item in jdata.sub_variants" :key="item.name">
               <!-- jdata.sub_fields is object -->
-              <DargsItem
-                ref="subvariant"
-                :jdata="item"
-              />
+              <DargsItem ref="subvariant" :jdata="item" />
             </v-list-item>
           </v-list>
 
           <!-- if length == 0, assume it allows any arguments -->
           <!-- textarea for dict -->
           <v-textarea
-            v-else-if="!Object.keys(jdata.sub_fields).length && !Object.keys(jdata.sub_variants).length"
+            v-else-if="
+              !Object.keys(jdata.sub_fields).length &&
+              !Object.keys(jdata.sub_variants).length
+            "
             v-model="value"
             :hint="jdata.doc"
             :placeholder="select_type"
@@ -234,14 +211,16 @@
           >
             <template #label>
               <div>
-                {{ jdata.name }} <small v-if="jdata.optional">{{ jdata.default ? $t('message.optional_default', { default: jdata.default }) : $t('message.optional') }}</small>
+                {{ jdata.name }}
+                <small v-if="jdata.optional">{{
+                  jdata.default
+                    ? $t("message.optional_default", { default: jdata.default })
+                    : $t("message.optional")
+                }}</small>
               </div>
             </template>
             <template #message="{ message, key }">
-              <div
-                :key="key"
-                v-html="message.replaceAll('\n', '<br/>')"
-              />
+              <div :key="key" v-html="message.replaceAll('\n', '<br/>')" />
             </template>
           </v-textarea>
         </div>
@@ -253,28 +232,15 @@
     class="w-100"
     variant="outlined"
   >
-    <v-tabs
-      v-model="tab"
-      show-arrows
-    >
-      <v-tab
-        v-for="item in jdata.choice_dict"
-        :key="item.name"
-      >
+    <v-tabs v-model="tab" show-arrows>
+      <v-tab v-for="item in jdata.choice_dict" :key="item.name">
         {{ item.name }}
       </v-tab>
     </v-tabs>
     <v-window v-model="tab">
       <!-- important: use eager prop to let this.$refs["subitem"][this.tab] not undefined -->
-      <v-window-item
-        v-for="item in jdata.choice_dict"
-        :key="item.name"
-        eager
-      >
-        <DargsItem
-          ref="subitem"
-          :jdata="item"
-        />
+      <v-window-item v-for="item in jdata.choice_dict" :key="item.name" eager>
+        <DargsItem ref="subitem" :jdata="item" />
       </v-window-item>
     </v-window>
   </v-card>
@@ -292,7 +258,7 @@ export default {
     if (this.jdata.object == "Variant") {
       if (this.jdata.default_tag) {
         tab = Object.keys(this.jdata.choice_dict).indexOf(
-          this.jdata.default_tag
+          this.jdata.default_tag,
         );
       }
       if (tab < 0) tab = 0;
@@ -323,8 +289,8 @@ export default {
           new Map(
             this.$refs["subitem"]
               .filter((vv) => !vv.jdata.optional || vv.check)
-              .map((vv) => [vv.jdata.name, vv.dvalue()])
-          )
+              .map((vv) => [vv.jdata.name, vv.dvalue()]),
+          ),
         );
       } else if (this.jdata.object == "Argument") {
         if (this.select_type == "list") {
@@ -335,24 +301,24 @@ export default {
                     new Map(
                       this.$refs[`subitem_${ii}`]
                         .filter((vv) => !vv.jdata.optional || vv.check)
-                        .map((vv) => [vv.jdata.name, vv.dvalue()])
-                    )
+                        .map((vv) => [vv.jdata.name, vv.dvalue()]),
+                    ),
                   )
                 : Object();
             });
           } else {
-          // textarea -> list
-          if (!this.value) return [];
-          return this.value
-            .trim()
-            .split("\n")
-            .map((v) => {
-              try {
-                return JSON.parse(v);
-              } catch (e) {
-                return v;
-              }
-            });
+            // textarea -> list
+            if (!this.value) return [];
+            return this.value
+              .trim()
+              .split("\n")
+              .map((v) => {
+                try {
+                  return JSON.parse(v);
+                } catch (e) {
+                  return v;
+                }
+              });
           }
         } else if (["str", "int", "float"].includes(this.select_type)) {
           if (!this.value) {
@@ -373,19 +339,21 @@ export default {
                 new Map(
                   this.$refs["subitem"]
                     .filter((vv) => !vv.jdata.optional || vv.check)
-                    .map((vv) => [vv.jdata.name, vv.dvalue()])
-                )
+                    .map((vv) => [vv.jdata.name, vv.dvalue()]),
+                ),
               )
             : Object();
 
           const sub_variants = Object.keys(this.jdata.sub_variants).length
             ? Object.assign(
-                ...this.$refs["subvariant"].map((vv) => vv.dvalue())
+                ...this.$refs["subvariant"].map((vv) => vv.dvalue()),
               )
             : Object();
-          const any_arguments = (!Object.keys(this.jdata.sub_fields).length && !Object.keys(this.jdata.sub_variants).length)
-            ? JSON.parse(this.value)
-            : Object();
+          const any_arguments =
+            !Object.keys(this.jdata.sub_fields).length &&
+            !Object.keys(this.jdata.sub_variants).length
+              ? JSON.parse(this.value)
+              : Object();
           return {
             ...sub_fields,
             ...sub_variants,
@@ -400,7 +368,7 @@ export default {
               this.jdata.flag_name,
               Object.keys(this.jdata.choice_dict)[this.tab],
             ],
-          ])
+          ]),
         );
         return {
           ...flag,
@@ -440,7 +408,7 @@ export default {
         load_subitem();
       } else if (this.jdata.object == "Argument") {
         if (this.jdata.type.includes("list") && Array.isArray(obj)) {
-          if(this.jdata.repeat){
+          if (this.jdata.repeat) {
             this.repeat_jdata = [];
             [...Array(obj.length).keys()].forEach((ii) => {
               this.repeat_jdata.push(this.jdata);
@@ -462,10 +430,10 @@ export default {
                   }
                 });
             });
-          }else{
-          // list -> multiple line str
-          this.select_type = "list";
-          this.value = obj.map(JSON.stringify).join("\n");
+          } else {
+            // list -> multiple line str
+            this.select_type = "list";
+            this.value = obj.map(JSON.stringify).join("\n");
           }
         } else if (this.jdata.type.includes("str") && typeof obj == "string") {
           this.select_type = "str";
@@ -478,8 +446,7 @@ export default {
           this.value = String(obj);
           if (this.jdata.type.includes("float")) {
             this.select_type = "float";
-          }
-          else if (this.jdata.type.includes("int")) {
+          } else if (this.jdata.type.includes("int")) {
             this.select_type = "int";
           }
         } else if (
@@ -505,14 +472,14 @@ export default {
         }
       } else if (this.jdata.object == "Variant") {
         var tab = Object.keys(this.jdata.choice_dict).indexOf(
-          obj[this.jdata.flag_name] || this.jdata.default_tag
+          obj[this.jdata.flag_name] || this.jdata.default_tag,
         );
         // loop alias
         if (tab < 0)
           this.$refs["subitem"].some((vv, index) => {
             if (
               vv.jdata.alias.includes(
-                obj[this.jdata.flag_name] || this.jdata.default_tag
+                obj[this.jdata.flag_name] || this.jdata.default_tag,
               )
             ) {
               tab = index;
@@ -524,10 +491,10 @@ export default {
         this.$refs["subitem"][this.tab].load(obj);
       }
     },
-    add_repeat: function() {
+    add_repeat: function () {
       this.repeat_jdata.push(this.jdata);
     },
-    remove_repeat: function(index) {
+    remove_repeat: function (index) {
       this.repeat_jdata.splice(index, 1);
     },
   },

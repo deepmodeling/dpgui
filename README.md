@@ -22,16 +22,19 @@ dpgui
 ### Vue app
 
 Install the app using yarn:
+
 ```sh
 yarn install
 ```
 
 Preview the app:
+
 ```sh
 yarn serve
 ```
 
 Build the app:
+
 ```sh
 yarn build
 ```

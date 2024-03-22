@@ -19,19 +19,13 @@
       </v-col>
       <v-col cols="auto">
         <v-btn @click="from_url(example_select)">
-          {{ $t('message.load_example') }}
+          {{ $t("message.load_example") }}
         </v-btn>
       </v-col>
     </v-row>
-    <DargsItem
-      ref="item"
-      :jdata="jdata"
-    />
-    <v-btn
-      block
-      @click="to_json()"
-    >
-      {{ $t('message.save_json') }}
+    <DargsItem ref="item" :jdata="jdata" />
+    <v-btn block @click="to_json()">
+      {{ $t("message.save_json") }}
     </v-btn>
   </div>
 </template>
@@ -82,7 +76,7 @@ export default {
         false,
         false,
         0,
-        null
+        null,
       );
       a.dispatchEvent(e);
     },
@@ -131,5 +125,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
