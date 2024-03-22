@@ -1,25 +1,12 @@
 <template>
   <v-container>
-    <DargsInput
-      v-if="jdata"
-      :jdata="jdata"
-      :examples="examples"
-    />
-    <div
-      v-else-if="loading"
-      class="text-center"
-    >
-      <v-progress-circular
-        indeterminate
-        color="primary"
-      />
-      {{ $t('message.loading') }}
+    <DargsInput v-if="jdata" :jdata="jdata" :examples="examples" />
+    <div v-else-if="loading" class="text-center">
+      <v-progress-circular indeterminate color="primary" />
+      {{ $t("message.loading") }}
     </div>
-    <div
-      v-else
-      class="text-center"
-    >
-      {{ $t('message.invalid_id') }}
+    <div v-else class="text-center">
+      {{ $t("message.invalid_id") }}
     </div>
   </v-container>
 </template>

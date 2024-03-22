@@ -12,7 +12,7 @@
       clearable
     />
     <v-btn @click="add">
-      <v-icon>fas fa-plus</v-icon>{{ $t('message.add') }}
+      <v-icon>fas fa-plus</v-icon>{{ $t("message.add") }}
     </v-btn>
   </v-container>
 </template>
