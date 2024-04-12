@@ -2491,10 +2491,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@deepmodeling/args@npm:0.0.15":
-  version: 0.0.15
-  resolution: "@deepmodeling/args@npm:0.0.15"
-  checksum: e2e01a3395b889f5d03645bf21d7107e457a79384cf55fd6e3da13bada46d1aaa1f994aafa5b8e3eacab832beb08f87be2b4d57dd4acc6accfd52f9eba363b15
+"@deepmodeling/args@npm:0.0.17":
+  version: 0.0.17
+  resolution: "@deepmodeling/args@npm:0.0.17"
+  checksum: 1e554185d854e054ae1fe902924653d17424a262f72aeca8444eb72b9ef03ee3e7f630098d516369948cda86261df36fe7fd26ddd0d8ee096323e77c43db6940
   languageName: node
   linkType: hard
 
@@ -6040,7 +6040,7 @@ __metadata:
   dependencies:
     "@babel/core": ^7.23.7
     "@babel/eslint-parser": ^7.23.3
-    "@deepmodeling/args": 0.0.15
+    "@deepmodeling/args": 0.0.17
     "@fortawesome/fontawesome-free": ^6.5.1
     "@vue/cli-plugin-babel": ~5.0.8
     "@vue/cli-plugin-eslint": ~5.0.8
