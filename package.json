@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@deepmodeling/args": "0.0.17",
-    "axios": "^1.6.3",
+    "axios": "^1.6.8",
     "core-js": "^3.35.0",
     "register-service-worker": "^1.7.1",
     "vue": "^3.4.21",
