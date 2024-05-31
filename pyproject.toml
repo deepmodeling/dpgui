@@ -55,7 +55,6 @@ packages = [
 [tool.hatch.version]
 source = "nodejs"
 
-[tool.hatch.build.hooks.custom]
 [tool.hatch.build.targets.wheel.hooks.custom]
 
 [tool.isort]
