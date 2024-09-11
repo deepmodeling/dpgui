@@ -6,7 +6,7 @@ A web-based GUI for user inputs.
 
 ### Website
 
-Visit the app from https://deepmodeling.com/dpgui.
+Visit the app from https://dpgui.deepmodeling.com.
 
 ### Python package
 
