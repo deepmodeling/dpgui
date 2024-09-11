@@ -2,7 +2,7 @@ const { VuetifyPlugin } = require("webpack-plugin-vuetify");
 
 module.exports = {
   transpileDependencies: ["vuetify"],
-  publicPath: process.env.BASE_URL ? process.env.BASE_URL : "/dpgui/",
+  publicPath: process.env.BASE_URL ? process.env.BASE_URL : "/",
   configureWebpack: {
     resolve: {
       fallback: {
