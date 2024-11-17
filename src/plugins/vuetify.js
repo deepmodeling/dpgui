@@ -4,7 +4,7 @@ import { aliases, fa } from "vuetify/iconsets/fa";
 import "@fortawesome/fontawesome-free/css/all.css";
 import { createVueI18nAdapter } from "vuetify/locale/adapters/vue-i18n";
 import { useI18n } from "vue-i18n";
-import { i18n } from "../i18n.js";
+import i18n from "../i18n.js";
 
 const vuetify = createVuetify({
   components: {},
