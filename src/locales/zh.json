@@ -27,6 +27,7 @@
         "management": "管理",
         "add_repeat": "添加新项",
         "remove_repeat": "移除第{index}项",
+        "dict_key": "键名",
         "languages": "语言"
     }
 }

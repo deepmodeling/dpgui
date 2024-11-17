@@ -32,7 +32,12 @@
           </v-col>
         </v-row>
         <!-- list of arguments, repeat=True -->
-        <v-row v-if="select_type == 'list' && jdata.repeat" class="w-100">
+        <v-row
+          v-if="
+            (select_type == 'list' || select_type == 'dict') && jdata.repeat
+          "
+          class="w-100"
+        >
           <v-col cols="auto">
             <v-list>
               <v-card variant="outlined">
@@ -51,6 +56,17 @@
                       <v-card-title class="font-weight-bold">
                         {{ jdata.name }} - Item {{ index }}
                       </v-card-title>
+                      <!-- item key for dict -->
+                      <v-text-field
+                        v-if="select_type == 'dict'"
+                        v-model="keys[index]"
+                        :hint="$t('message.dict_key')"
+                        :placeholder="$t('message.dict_key')"
+                        :rules="rules.required"
+                        clearable
+                        @input="up"
+                      >
+                      </v-text-field>
                       <v-card-actions>
                         <v-btn
                           block
@@ -255,6 +271,7 @@ export default {
   data() {
     var tab = 0;
     const repeat_jdata = [];
+    const keys = [];
     if (this.jdata.object == "Variant") {
       if (this.jdata.default_tag) {
         tab = Object.keys(this.jdata.choice_dict).indexOf(
@@ -265,6 +282,7 @@ export default {
     } else if (this.jdata.object == "Argument" && this.jdata.repeat) {
       // init with one element
       repeat_jdata.push(this.jdata);
+      keys.push("item_0");
     }
     return {
       tab: tab,
@@ -276,6 +294,7 @@ export default {
       },
       select_type: this.jdata.type && this.jdata.type[0],
       repeat_jdata,
+      keys,
     };
   },
   methods: {
@@ -333,6 +352,25 @@ export default {
           return this.value;
         } else if (this.select_type == "NoneType") {
           return null;
+        } else if (this.select_type == "dict" && this.jdata.repeat) {
+          return Object.fromEntries(
+            new Map(
+              [...Array(this.repeat_jdata.length).keys()].map((ii) => {
+                return [
+                  this.keys[ii],
+                  Object.keys(this.jdata.sub_fields).length
+                    ? Object.fromEntries(
+                        new Map(
+                          this.$refs[`subitem_${ii}`]
+                            .filter((vv) => !vv.jdata.optional || vv.check)
+                            .map((vv) => [vv.jdata.name, vv.dvalue()]),
+                        ),
+                      )
+                    : Object(),
+                ];
+              }),
+            ),
+          );
         } else if (this.select_type == "dict") {
           const sub_fields = Object.keys(this.jdata.sub_fields).length
             ? Object.fromEntries(
@@ -459,6 +497,29 @@ export default {
         } else if (this.jdata.type.includes("NoneType") && obj === null) {
           this.value = obj;
           this.select_type = "NoneType";
+        } else if (this.jdata.type.includes("dict") && this.jdata.repeat) {
+          this.repeat_jdata = [];
+          this.keys = Object.keys(obj);
+          [...Array(obj.length).keys()].forEach((ii) => {
+            this.repeat_jdata.push(this.jdata);
+          });
+          [...Array(obj.length).keys()].forEach((ii) => {
+            var subobj = obj[this.keys[ii]];
+            if (this.$refs[`subitem_${ii}`])
+              this.$refs[`subitem_${ii}`].forEach((vv) => {
+                // check if it exists, name and alias
+                if (vv.jdata.name in subobj) {
+                  // exists
+                  vv.load(subobj[vv.jdata.name]);
+                }
+                vv.jdata.alias.forEach((aa) => {
+                  if (aa in subobj) vv.load(subobj[aa]);
+                });
+                if (vv.jdata.optional) {
+                  vv.check = vv.jdata.name in subobj;
+                }
+              });
+          });
         } else if (this.jdata.type.includes("dict")) {
           this.select_type = "dict";
           load_subitem();
@@ -493,9 +554,11 @@ export default {
     },
     add_repeat: function () {
       this.repeat_jdata.push(this.jdata);
+      this.keys.push(`item_${this.repeat_jdata.length - 1}`);
     },
     remove_repeat: function (index) {
       this.repeat_jdata.splice(index, 1);
+      this.keys.splice(index, 1);
     },
   },
 };
