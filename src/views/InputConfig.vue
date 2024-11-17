@@ -3,7 +3,7 @@
     <v-data-table :headers="headers" :items="items" :items-per-page="10">
       <template #item.template="{ item }">
         <v-btn :to="item.to">
-          {{ $tc("message.template") }}
+          {{ $t("message.template") }}
         </v-btn>
       </template>
       <template #item.delete="{ item }">
@@ -24,7 +24,7 @@ export default {
     return {
       headers: [
         { title: this.$t("message.name"), key: "name" },
-        { title: this.$tc("message.template"), key: "template" },
+        { title: this.$t("message.template"), key: "template" },
         { title: this.$t("message.delete"), key: "delete" },
       ],
       items: this.all_items(),
