@@ -1,4 +1,5 @@
 import { createI18n } from 'vue-i18n';
+import { en, zhHans } from 'vuetify/locale'
 
 function loadLocaleMessages() {
     const locales = require.context('./locales', true, /[A-Za-z0-9-_,\s]+\.json$/i);
@@ -10,6 +11,8 @@ function loadLocaleMessages() {
             messages[locale] = locales(key);
         }
     })
+    messages["en"]["$vuetify"] = en;
+    messages["zh"]["$vuetify"] = zhHans;
     return messages;
 }
 
