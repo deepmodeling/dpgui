@@ -131,7 +131,7 @@ export default {
             installed_templates.length === 0
               ? null
               : {
-                  name: this.$tc(
+                  name: this.$t(
                     "message.installed_template",
                     installed_templates.length,
                   ),
@@ -140,7 +140,7 @@ export default {
             builtin_templates.length === 0
               ? null
               : {
-                  name: this.$tc(
+                  name: this.$t(
                     "message.builtin_template",
                     builtin_templates.length,
                   ),
@@ -149,14 +149,14 @@ export default {
             customized_templates.length === 0
               ? null
               : {
-                  name: this.$tc(
+                  name: this.$t(
                     "message.customized_template",
                     customized_templates.length,
                   ),
                   sub: customized_templates,
                 },
             {
-              name: this.$tc("message.setting", 2),
+              name: this.$t("message.setting", 2),
               sub: [
                 {
                   name: this.$t("message.management"),

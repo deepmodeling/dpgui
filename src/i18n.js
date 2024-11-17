@@ -1,4 +1,5 @@
 import { createI18n } from "vue-i18n";
+import { en, zhHans } from "vuetify/locale";
 
 function loadLocaleMessages() {
   const locales = require.context(
@@ -14,10 +15,13 @@ function loadLocaleMessages() {
       messages[locale] = locales(key);
     }
   });
+  messages["en"]["$vuetify"] = en;
+  messages["zh"]["$vuetify"] = zhHans;
   return messages;
 }
 
 export default createI18n({
+  legacy: false,
   locale:
     process.env.VUE_APP_I18N_LOCALE || navigator.language.split("-")[0] || "en",
   fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || "en",
