@@ -23,3 +23,4 @@ export default createI18n({
     messages: loadLocaleMessages(),
     fallbackWarn: false,
 })
+

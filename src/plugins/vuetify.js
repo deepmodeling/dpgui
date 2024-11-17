@@ -1,30 +1,22 @@
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify';
 import { aliases, fa } from 'vuetify/iconsets/fa'
-import { VDataTable } from 'vuetify/labs/VDataTable'
 import '@fortawesome/fontawesome-free/css/all.css'
 import { createVueI18nAdapter } from 'vuetify/locale/adapters/vue-i18n'
 import { useI18n } from 'vue-i18n'
 import { i18n } from '../i18n.js'
 
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
-
 const vuetify = createVuetify({
-  components : {
-    ...components,
-    VDataTable,
-  },
-  directives,
+  components: {},
   icons: {
-    defaultSet: 'fa',
+    defaultSet: "fa",
     aliases,
     sets: {
       fa,
     },
   },
   theme: {
-    defaultTheme: 'myCustomTheme',
+    defaultTheme: "myCustomTheme",
     themes: {
       myCustomTheme: {
         dark: false,

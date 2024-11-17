@@ -27,6 +27,7 @@
         "management": "Management",
         "add_repeat": "Add Item",
         "remove_repeat": "Remove Item {index}",
+        "dict_key": "Item key",
         "languages": "Languages"
     }
 }

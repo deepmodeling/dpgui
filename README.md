@@ -6,7 +6,7 @@ A web-based GUI for user inputs.
 
 ### Website
 
-Visit the app from https://deepmodeling.org/dpgui.
+Visit the app from https://dpgui.deepmodeling.com.
 
 ### Python package
 
@@ -22,16 +22,19 @@ dpgui
 ### Vue app
 
 Install the app using yarn:
+
 ```sh
 yarn install
 ```
 
 Preview the app:
+
 ```sh
 yarn serve
 ```
 
 Build the app:
+
 ```sh
 yarn build
 ```
