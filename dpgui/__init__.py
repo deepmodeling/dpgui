@@ -12,4 +12,4 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 
-__all__ = ["start_dpgui", "generate_dpgui_templates"]
+__all__ = ["generate_dpgui_templates", "start_dpgui"]
