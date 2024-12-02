@@ -6384,7 +6384,7 @@ __metadata:
     core-js: ^3.37.0
     crypto-browserify: ^3.12.0
     eslint: ^8.57.0
-    eslint-plugin-vue: ^9.25.0
+    eslint-plugin-vue: ^9.32.0
     ifdef-loader: ^2.3.2
     register-service-worker: ^1.7.1
     sass: ~1.81.0
@@ -6705,21 +6705,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-vue@npm:^9.25.0":
-  version: 9.25.0
-  resolution: "eslint-plugin-vue@npm:9.25.0"
+"eslint-plugin-vue@npm:^9.32.0":
+  version: 9.32.0
+  resolution: "eslint-plugin-vue@npm:9.32.0"
   dependencies:
     "@eslint-community/eslint-utils": ^4.4.0
     globals: ^13.24.0
     natural-compare: ^1.4.0
     nth-check: ^2.1.1
     postcss-selector-parser: ^6.0.15
-    semver: ^7.6.0
-    vue-eslint-parser: ^9.4.2
+    semver: ^7.6.3
+    vue-eslint-parser: ^9.4.3
     xml-name-validator: ^4.0.0
   peerDependencies:
     eslint: ^6.2.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
-  checksum: 4685ea8b3feaa4dd9bf81edf4bd15493504a67ef5ba83b095ed41117bc816d21c111f4c39b6a82024f7d5c6950a7f13457bada26453a3835989221ff68e34ad1
+  checksum: 14320cdb5f8c9f7cb23cad4595c1fd22f61c0b68ef1b7bd9071060d9f5bd32277ad7d022a7bf49fcb4c302d32a60045dbe1e734461edde6af160e0ade2a06410
   languageName: node
   linkType: hard
 
@@ -11310,14 +11310,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.6.0":
-  version: 7.6.0
-  resolution: "semver@npm:7.6.0"
-  dependencies:
-    lru-cache: ^6.0.0
+"semver@npm:^7.6.3":
+  version: 7.6.3
+  resolution: "semver@npm:7.6.3"
   bin:
     semver: bin/semver.js
-  checksum: 7427f05b70786c696640edc29fdd4bc33b2acf3bbe1740b955029044f80575fc664e1a512e4113c3af21e767154a94b4aa214bf6cd6e42a1f6dba5914e0b208c
+  checksum: 4110ec5d015c9438f322257b1c51fe30276e5f766a3f64c09edd1d7ea7118ecbc3f379f3b69032bacf13116dc7abc4ad8ce0d7e2bd642e26b0d271b56b61a7d8
   languageName: node
   linkType: hard
 
@@ -12533,9 +12531,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-eslint-parser@npm:^9.4.2":
-  version: 9.4.2
-  resolution: "vue-eslint-parser@npm:9.4.2"
+"vue-eslint-parser@npm:^9.4.3":
+  version: 9.4.3
+  resolution: "vue-eslint-parser@npm:9.4.3"
   dependencies:
     debug: ^4.3.4
     eslint-scope: ^7.1.1
@@ -12546,7 +12544,7 @@ __metadata:
     semver: ^7.3.6
   peerDependencies:
     eslint: ">=6.0.0"
-  checksum: 67f14c8ea19b578077a878864a5ec438ab4c597381923c9814fac39b3772da8654ac2a543467b5880607f694131f8ff34b87bd24c10bbc5f99fa2fcac49ff2e6
+  checksum: 8d5b7ef7c5ee264ca2ba78da4b95ac7a66175a458d153a35e92cd7c55b794db0f2c31a8fdd40021bab4496f2f64ab80d7dbb6dccff4103beb4564c439a88fa42
   languageName: node
   linkType: hard
 
