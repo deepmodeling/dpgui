@@ -2635,10 +2635,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/fontawesome-free@npm:^6.5.1":
-  version: 6.5.1
-  resolution: "@fortawesome/fontawesome-free@npm:6.5.1"
-  checksum: 8905de0ad0cab9b6c4a3503267d96c9b34df703d3e1331e18f37f775722eaef9e93a55ead53cca6f5a68559c7cbc77dfd871e75a7932b2a54dfa99352b5dc7d3
+"@fortawesome/fontawesome-free@npm:^6.7.2":
+  version: 6.7.2
+  resolution: "@fortawesome/fontawesome-free@npm:6.7.2"
+  checksum: 2ceb384ada8e4a1e8a8e24384a35e3afa01589ddec67c8c52e3ad5d7db1662d0fc92560bd9a23baa4e0676e721e423aef99fb79fe6899bf13900fd1e611b6760
   languageName: node
   linkType: hard
 
@@ -6373,7 +6373,7 @@ __metadata:
     "@babel/core": ^7.24.5
     "@babel/eslint-parser": ^7.25.9
     "@deepmodeling/args": 0.0.17
-    "@fortawesome/fontawesome-free": ^6.5.1
+    "@fortawesome/fontawesome-free": ^6.7.2
     "@vue/cli-plugin-babel": ~5.0.8
     "@vue/cli-plugin-eslint": ~5.0.8
     "@vue/cli-plugin-pwa": ~5.0.8
